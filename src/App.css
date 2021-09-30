@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #6c757d;;
+  --secondary-color: #024e76;
+  --tertiary-color: #0ff;
+  --Bootstrap-black: #343a40;
+  --whiteText: whitesmoke;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Large Screens 1200px and up*/
+
+.MainflexLg{
+  display: flex;
+  flex-direction: row;
+  height: 1200px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.PadLg{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: var(--Bootstrap-black);
+  width: 25%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.PadTitle{
+  font-weight: bold;
+  font-size: 42px;
+  color: var(--whiteText);
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.CreateButton{
+background-color: var(--primary-color);
+color: var(--whiteText);
+height: 50px;
+width: 200px;
+margin-left: 30%;
+margin-top: 2%;
+border-radius: 23px;
 }
+
+.CreateButton:hover{
+  color: var(--tertiary-color);
+}
+
