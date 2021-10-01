@@ -50,3 +50,28 @@ border-radius: 23px;
   color: var(--tertiary-color);
 }
 
+
+.SavedNotesFlex{
+  display:flex;
+  flex-direction: column;
+  margin-left: 15%;
+  height: 50%;
+  width: 65%;
+  overflow-y: scroll;
+  background-color: whitesmoke;
+}
+
+.NoteItem{
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  font-size: 25px;
+}
+
+.NoteFlex{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 50%;
+  border: solid  var(--Bootstrap-black);
+}
