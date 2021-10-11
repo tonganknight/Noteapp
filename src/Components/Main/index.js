@@ -1,39 +1,16 @@
 import React from 'react';
+import InputNote from "../InputNote";
 
-
-function Note({note, index, createNote, UpdateNote, deleteNote}){
+ /*function Note({note, index, createNote, UpdateNote, deleteNote}){
 
     return{
         
     }
 }
 
+*/
 
 function Main() {
-
-const [note, setNote] =React.useState([
-{
-    NoteName: "This is the first Dummy Note",
-    Text: "This is the first place holder note",
-    DateTime: "1:33PM"
-},
-{
-    NoteName: "This is the Second Dummy Note",
-    Text: "This is the Second place holder note",
-    DateTime: "1:33PM"
-},
-{
-    NoteName: "This is the Third Dummy Note",
-    Text: "This is the Third place holder note",
-    DateTime: "1:33PM"
-},
-{
-    NoteName: "This is the Fourth Dummy Note",
-    Text: "This is the Fourth place holder note",
-    DateTime: "1:33PM"
-}
-
-]);
 
 const [displayedNote, setDisplayedNote] = React.useState([
 
@@ -42,46 +19,17 @@ const [displayedNote, setDisplayedNote] = React.useState([
     {DateTime: ""}
 ])
 
-
-
-  /*  function displayNote(){
-
-        return(
-
-            <div className="NoteFlex">
-                <div className="NoteInfo">
-                <div className="NoteTitle">{displayedNote.NoteName}</div>
-                <div className="NoteTime">{displayedNote.DateTime}</div>
-                <button className="KillButton">Delete note</button>
-                </div>
-                <div className="NoteText">{displayedNote.Text}</div>
-            </div>
-
-        )
-    } */
-
-    function handleNoteSelection({note}){
-        const ogNote = [displayedNote.NoteName ] ;
-
-        setDisplayedNote(note);
-
-    }
-
     function NoteItem ({note}){
 
         return(
             <div>
             <div className="NoteDate">{note.DateTime}</div>
-            <button onClick={handleNoteSelection}  className="NoteItem">{note.NoteName} </button>  
+            <button   className="NoteItem">{note.NoteName} </button>  
             </div>
         )
     }
     
 
-    const addNote = text => {
-        const newNote = [...note, {text}];
-        setNote(newNote);
-    };
 
     function NoteInput({ addNote }) {
         const [value, setValue] = React.useState("");
@@ -131,21 +79,12 @@ const [displayedNote, setDisplayedNote] = React.useState([
 
                <div className="SavedNotesFlex">
               
-                {note.map(
-                    ((note, index) => (<NoteItem note={note} index= {index} key={index} />))
-                )}
+               
 
                </div>
             </div>
 
-            <div className="NoteFlex">
-                <div className="NoteInfo">
-                <div className="NoteTitle">{displayedNote.NoteName}</div>
-                <div className="NoteTime">{displayedNote.DateTime}</div>
-                <button className="KillButton">Delete note</button>
-                </div>
-                <div className="NoteText">{displayedNote.Text}</div>
-            </div>
+            <InputNote/>
 
 
             <div className="EventPad">This will be our Events display</div>

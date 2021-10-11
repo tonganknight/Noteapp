@@ -139,5 +139,28 @@ font-size: 25px;
   height: 67%;
   width: 25%;
   margin-left: 1%;
+}
 
+.CreateNoteButton{
+  background-color: Green;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 25px;
+  height: 67%;
+  width: 25%;
+  margin-left: 1%;
+
+}
+
+.Titleinfo{
+  height: 60%;
+  font-size: 35px;
+  margin-bottom: 5%;
+  border: none;
+  width: 100%;
+}
+
+.Dateinfo{
+  width: 90%;
+  font-size: 35px;
 }
