@@ -64,14 +64,80 @@ border-radius: 23px;
 .NoteItem{
   width: 100%;
   background-color: var(--primary-color);
-  color: var(--tertiary-color);
-  font-size: 25px;
+  color: whitesmoke;
+  font-size: 25px;  
+  margin-top: 1px;
 }
 
 .NoteFlex{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   width: 50%;
-  border: solid  var(--Bootstrap-black);
+
+}
+
+.NoteInfo{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.NoteDate{
+  background: var(--primary-color);
+  color: #0ff;
+  text-align: center;
+  font-size: 13px;
+}
+
+.NoteTitle{
+  margin: 4%;
+  height: 40%;
+  width: 50%;
+  font-size: 50px; 
+   border-bottom: solid black; 
+
+}
+.NoteTime{
+  margin-left: 21%;
+  font-size: 30px;
+  margin-bottom: 2%;
+  margin-top: 3%;
+  height: 8%;
+}
+
+.NoteField{
+display: flex;
+width: 92%;
+margin: 4%;
+height: 100%;
+border: none;
+font-size: 25px;
+}
+
+.NoteText{
+    display: flex;
+    width: 92%;
+    margin: 4%;
+    height: 100%;
+    border: none;
+    font-size: 25px;
+}
+
+.EventPad{
+  height: 100%;
+  width: 25%;
+  background-color: var(--primary-color);
+  color: whitesmoke;
+}
+
+.KillButton{
+  background-color: #d9534f;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 25px;
+  height: 67%;
+  width: 25%;
+  margin-left: 1%;
+
 }
