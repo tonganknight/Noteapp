@@ -1,5 +1,4 @@
 import React from 'react';
-import InputNote from "../InputNote";
 
  /*function Note({note, index, createNote, UpdateNote, deleteNote}){
 
@@ -14,48 +13,80 @@ function Main() {
 
 const [displayedNote, setDisplayedNote] = React.useState([
 
-    {NoteName: ""},
-    { Text: "" },
-    {DateTime: ""}
+    {NoteName: "", Text: "", DateTime: ""}
+
+
 ])
 
-    function NoteItem ({note}){
+function InputNote (NoteData){
 
-        return(
-            <div>
-            <div className="NoteDate">{note.DateTime}</div>
-            <button   className="NoteItem">{note.NoteName} </button>  
-            </div>
-        )
+    function handleTitle(){
+          let TitleText =  document.getElementById("Title");
+          let StringTitleText = toString(TitleText);
+          let Title = StringTitleText.trim();
+
+            displayedNote.NoteName = Title;
+            setDisplayedNote(Title);
+
+        console.log(displayedNote);
     }
-    
 
 
-    function NoteInput({ addNote }) {
-        const [value, setValue] = React.useState("");
-        const handleSubmit = e =>{
-            e.preventDefault();
-            if (!value) return;
-            addNote(value);
-            setValue("");
-        };
 
-        return(
-            <form onSubmit={handleSubmit}>
+    return(
 
-            <textarea className="NoteField" value={value} onChange={e=> setValue(e.target.value)}>
+    <div className="NoteFlex">
+    <div className="NoteInfo">
+    <div className="NoteTitle"><input id="Title" onChange={handleTitle}className="Titleinfo"></input></div>
+    <div className="NoteTime"><input className="Dateinfo"></input></div>
+    <button className="CreateNoteButton">Create Note</button>
+    </div>
+    <div className="NoteText">
+        <textarea className="NoteText"></textarea>
+    </div>
+  
 
-            </textarea>
-            
-            </form>
-        )
+    </div>
 
-        
-    }
+    )
+}
+
+function CreateNote(){
+
+
+}
+
+
+
+
+
+
+function StaticNote(NoteData){
+
+
+    return(
+
+    <div className="NoteFlex">
+    <div className="NoteInfo">
+    <div className="NoteTitle">{NoteData.Title}</div>
+    <div className="NoteTime">{NoteData.DateTime}</div>
+    <button className="KillButton">Delete Note</button>
+    </div>
+    <div className="NoteText">
+        {NoteData.Text}
+    </div>
+  
+
+    </div>
+
+    )
+}
+
+
 
     function CreateNewNote (){
 
-  
+        /*switch statement for component view */
     }
 
 
@@ -68,7 +99,7 @@ const [displayedNote, setDisplayedNote] = React.useState([
                    Your Pad
                </div>
 
-               <button className="CreateButton" > Create New Note +</button>
+               <button className="CreateButton" >Create New Note +</button>
                <button className="CreateButton"> Create New Event +</button>
                <button className="CreateButton"> Create New Calculation +</button>
 
@@ -84,7 +115,7 @@ const [displayedNote, setDisplayedNote] = React.useState([
                </div>
             </div>
 
-            <InputNote/>
+            <InputNote NoteData= ""/>
 
 
             <div className="EventPad">This will be our Events display</div>

@@ -1,9 +1,7 @@
 import React from 'react';
 
 
-function InputNote(){
-
-
+function InputNote(NoteData){
 
     return(
 
