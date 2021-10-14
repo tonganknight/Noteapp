@@ -21,14 +21,10 @@ const [displayedNote, setDisplayedNote] = React.useState([
 function InputNote (NoteData){
 
     function handleTitle(){
-          let TitleText =  document.getElementById("Title");
-          let StringTitleText = toString(TitleText);
-          let Title = StringTitleText.trim();
+          let TitleText =  document.getElementById("Title").innerText;
+          
 
-            displayedNote.NoteName = Title;
-            setDisplayedNote(Title);
-
-        console.log(displayedNote);
+        console.log(TitleText);
     }
 
 
@@ -37,9 +33,9 @@ function InputNote (NoteData){
 
     <div className="NoteFlex">
     <div className="NoteInfo">
-    <div className="NoteTitle"><input id="Title" onChange={handleTitle}className="Titleinfo"></input></div>
+    <div className="NoteTitle"><input id="Title" className="Titleinfo"></input></div>
     <div className="NoteTime"><input className="Dateinfo"></input></div>
-    <button className="CreateNoteButton">Create Note</button>
+    <button  onClick={handleTitle}className="CreateNoteButton">Create Note</button>
     </div>
     <div className="NoteText">
         <textarea className="NoteText"></textarea>
