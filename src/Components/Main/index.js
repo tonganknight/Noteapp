@@ -10,20 +10,10 @@ var moment = require('moment');
 */
 
 function Main() {
-
     const TimeNow = moment().format("MMMM Do YYYY, h:mm a");
+    const [displayedNote, setDisplayedNote] = React.useState([])
 
-    const [displayedNote, setDisplayedNote] = React.useState([
-
-    {NoteName: "", Text: "", DateTime: ""}
-
-
-])
-
-function InputNote (){
-
-    
-
+function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
     let Text = document.getElementById("NoteInfo").value;
@@ -32,28 +22,18 @@ function InputNote (){
     console.log(NoteTime);
     console.log(Text);
 
+    let NewdisplayNote = {
+        NoteName: `${Title}`,
+        Text: `${Text}`,
+        DateTime: `${NoteTime}`
+    };
 
-    
+    displayedNote.push(NewdisplayNote);
+
+    setDisplayedNote(displayedNote);
+    console.log(displayedNote);
 }
 
-function StaticNote(NoteData){
-    return(
-
-    <div className="NoteFlex">
-    <div className="NoteInfo">
-    <div className="NoteTitle">{NoteData.Title}</div>
-    <div className="NoteTime">{NoteData.DateTime}</div>
-    <button className="KillButton">Delete Note</button>
-    </div>
-    <div className="NoteText">
-        {NoteData.Text}
-    </div>
-  
-
-    </div>
-
-    )
-}
 
 
     return(
@@ -75,17 +55,25 @@ function StaticNote(NoteData){
 
 
                <div className="SavedNotesFlex">
-              
-               
+                { displayedNote.map(note => (
+
+            <div className="SavedNotesFlex">
+            <div className="NoteDate">{note.DateTime}</div>
+            <div className="NoteTitle">{note.NoteName}</div>
+            </div>
+
+                    
+                ))}
 
                </div>
+
             </div>
 
             <div className="NoteFlex">
                 <div className="NoteInfo">
                 <div className="NoteTitle"><input id="Title" className="Titleinfo"></input></div>
                 <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
-                <button className="CreateNoteButton" onClick={InputNote}>Create Note</button>
+                <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
                 </div>
                 <div className="NoteText">
                     <textarea id="NoteInfo" className="NoteText"></textarea>
