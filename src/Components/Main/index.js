@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 var moment = require('moment');
  /*function Note({note, index, createNote, UpdateNote, deleteNote}){
 
@@ -11,28 +11,28 @@ var moment = require('moment');
 
 function Main() {
     const TimeNow = moment().format("MMMM Do YYYY, h:mm a");
-    const [displayedNote, setDisplayedNote] = React.useState([])
+    const [displayedNote, setDisplayedNote] = React.useState([
+        {NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
+    ])
 
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
-    let Text = document.getElementById("NoteInfo").value;
+    let NoteText = document.getElementById("NoteInfo").value;
+    let Time = document.getElementById("TimeStamp").value
           
     console.log(Title);
     console.log(NoteTime);
     console.log(Text);
 
-    let NewdisplayNote = {
-        NoteName: `${Title}`,
-        Text: `${Text}`,
-        DateTime: `${NoteTime}`
-    };
-
-    displayedNote.push(NewdisplayNote);
-
-    setDisplayedNote(displayedNote);
-    console.log(displayedNote);
+    const newdisplayedNote = [...displayedNote, {NoteName: Title, Text: NoteText, DateTime: TimeNow}];
+    console.log(newdisplayedNote)
+    setDisplayedNote(newdisplayedNote);
 }
+
+
+
+
 
 
 
@@ -55,15 +55,20 @@ function CreateNote (){
 
 
                <div className="SavedNotesFlex">
-                { displayedNote.map(note => (
+                {displayedNote.map(note =>{
 
-            <div className="SavedNotesFlex">
-            <div className="NoteDate">{note.DateTime}</div>
-            <div className="NoteTitle">{note.NoteName}</div>
-            </div>
+                    return(
+                        <div>
+                        <div className="NoteDate">{note.DateTime}</div>
+                        <button className="NoteItem">{note.NoteName}</button>
+                        </div>
 
+)
+})
+}
                     
-                ))}
+            
+        
 
                </div>
 
