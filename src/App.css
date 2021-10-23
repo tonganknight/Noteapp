@@ -155,6 +155,19 @@ font-size: 25px;
 
 }
 
+.DeleteNoteButton{
+  background-color: darkred;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 25px;
+  height: 25%;
+  width: 25%;
+  margin-left: 1%;
+  margin-right: 2%;
+  margin-top: 3.5%;
+  border-radius: 50px;
+}
+
 .Titleinfo{
   height: 60%;
   font-size: 35px;

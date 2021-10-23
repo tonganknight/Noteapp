@@ -12,26 +12,62 @@ var moment = require('moment');
 function Main() {
     const TimeNow = moment().format("MMMM Do YYYY, h:mm a");
     const [displayedNote, setDisplayedNote] = React.useState([
-        {NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
-    ])
+        { Index: 0, NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
+    ]);
+    const [BtnTrigger, setBtnTrigger]= React.useState(true);
 
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
     let NoteText = document.getElementById("NoteInfo").value;
-    let Time = document.getElementById("TimeStamp").value
-          
+
+    if(Title === ""){
+        window.alert("You Note must have a Title");
+        return;
+    }
     console.log(Title);
     console.log(NoteTime);
-    console.log(Text);
-
-    const newdisplayedNote = [...displayedNote, {NoteName: Title, Text: NoteText, DateTime: TimeNow}];
-    console.log(newdisplayedNote)
+    console.log(NoteText);
+    let BtnCount = document.getElementById("SavedNotes").childElementCount;
+    let Count = BtnCount.toString();
+    console.log("there are "+ Count + " Buttons in the saved notes");
+    const newdisplayedNote = [...displayedNote, {Index: BtnCount, NoteName: Title, Text: NoteText, DateTime: TimeNow}];
+    console.log(newdisplayedNote);
     setDisplayedNote(newdisplayedNote);
+    setBtnTrigger(!BtnTrigger);
 }
 
+function ButtonView() {
+    if(BtnTrigger === false){
+        return(
+             <button className="DeleteNoteButton">Delete Note</button>
+        )
+    }
+    if(BtnTrigger === true){
+        return(
+           <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
+        )
+    }
+}
 
+function ClearNoteforNew(){
+  document.getElementById("Title").value = "";
+  document.getElementById("NoteInfo").value= "";
+  setBtnTrigger(true);
+  console.log(BtnTrigger);
+};
 
+const GetNote = e =>{
+ e.preventDefault();
+ setBtnTrigger(false);
+ let ClickedBtn = e.target.id;
+ console.log(ClickedBtn);
+ let LookupArr =displayedNote.find(place => place.Index == `${ClickedBtn}`);
+ console.log(LookupArr);
+ document.getElementById("Title").value= LookupArr.NoteName;
+ document.getElementById("TimeStamp").value = "";
+ document.getElementById("NoteInfo").value = LookupArr.Text;
+};
 
 
 
@@ -45,31 +81,22 @@ function CreateNote (){
                    Your Pad
                </div>
 
-               <button className="CreateButton" >Create New Note +</button>
+               <button  onClick={ClearNoteforNew}className="CreateButton" >Create New Note +</button>
                <button className="CreateButton"> Create New Event +</button>
                <button className="CreateButton"> Create New Calculation +</button>
-
                <div className="PadTitle">
                     My Notes
                </div>
 
-
-               <div className="SavedNotesFlex">
+               <div id="SavedNotes" className="SavedNotesFlex">
                 {displayedNote.map(note =>{
 
                     return(
                         <div>
                         <div className="NoteDate">{note.DateTime}</div>
-                        <button className="NoteItem">{note.NoteName}</button>
+                        <button id={note.Index} key={note.Index} onClick={GetNote}className="NoteItem">{note.NoteName}</button>
                         </div>
-
-)
-})
-}
-                    
-            
-        
-
+        )})}                    
                </div>
 
             </div>
@@ -78,26 +105,17 @@ function CreateNote (){
                 <div className="NoteInfo">
                 <div className="NoteTitle"><input id="Title" className="Titleinfo"></input></div>
                 <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
-                <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
+                <ButtonView/>
                 </div>
                 <div className="NoteText">
                     <textarea id="NoteInfo" className="NoteText"></textarea>
                 </div>
               
-
             </div>
-
 
             <div className="EventPad">This will be our Events display</div>
 
-
-
         </div>
-
-
-
-
-
     );
 };
 export default Main
