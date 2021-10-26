@@ -20,7 +20,6 @@ function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
     let NoteText = document.getElementById("NoteInfo").value;
-
     if(Title === ""){
         window.alert("You Note must have a Title");
         return;
@@ -29,6 +28,7 @@ function CreateNote (){
     console.log(NoteTime);
     console.log(NoteText);
     let BtnCount = document.getElementById("SavedNotes").childElementCount;
+    console.log("Here is the Element count " + BtnCount);
     let Count = BtnCount.toString();
     console.log("there are "+ Count + " Buttons in the saved notes");
     const newdisplayedNote = [...displayedNote, {Index: BtnCount, NoteName: Title, Text: NoteText, DateTime: TimeNow}];
@@ -37,18 +37,6 @@ function CreateNote (){
     setBtnTrigger(!BtnTrigger);
 }
 
-function ButtonView() {
-    if(BtnTrigger === false){
-        return(
-             <button className="DeleteNoteButton">Delete Note</button>
-        )
-    }
-    if(BtnTrigger === true){
-        return(
-           <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
-        )
-    }
-}
 
 function ClearNoteforNew(){
   document.getElementById("Title").value = "";
@@ -62,12 +50,40 @@ const GetNote = e =>{
  setBtnTrigger(false);
  let ClickedBtn = e.target.id;
  console.log(ClickedBtn);
- let LookupArr =displayedNote.find(place => place.Index == `${ClickedBtn}`);
- console.log(LookupArr);
- document.getElementById("Title").value= LookupArr.NoteName;
+ let LookUpArr =displayedNote.find(place => place.Index == `${ClickedBtn}`);
+ console.log(LookUpArr);
+ document.getElementById("Title").value= LookUpArr.NoteName;
  document.getElementById("TimeStamp").value = "";
- document.getElementById("NoteInfo").value = LookupArr.Text;
+ document.getElementById("NoteInfo").value = LookUpArr.Text;
+ let TargetTitle= document.getElementById("Title");
+ TargetTitle.setAttribute("data", `${LookUpArr.Index}`);
+ console.log(TargetTitle)
 };
+
+function DeleteNote(){
+let Title = document.getElementById("Title");
+let NoteId = Title.getAttribute("data");
+const newdisplayedNote = [...displayedNote];
+newdisplayedNote.splice(NoteId, 1);
+console.log(newdisplayedNote);
+setDisplayedNote(newdisplayedNote);
+
+}
+
+
+function ButtonView() {
+    if(BtnTrigger === false){
+        return(
+             <button className="DeleteNoteButton" onClick={DeleteNote}>Delete Note</button>
+        )
+    }
+    if(BtnTrigger === true){
+        return(
+           <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
+        )
+    }
+}
+
 
 
 
