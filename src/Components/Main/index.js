@@ -61,12 +61,21 @@ const GetNote = e =>{
 };
 
 function DeleteNote(){
-let Title = document.getElementById("Title");
-let NoteId = Title.getAttribute("data");
-const newdisplayedNote = [...displayedNote];
-newdisplayedNote.splice(NoteId, 1);
-console.log(newdisplayedNote);
-setDisplayedNote(newdisplayedNote);
+   
+    let newdisplayedNote = [...displayedNote];
+    function finditeminarray(text){
+        let NoteText = document.getElementById("NoteInfo").value;
+        return text === NoteText;
+    }
+    let NoteText = document.getElementById("NoteInfo").value;
+
+   let newone = newdisplayedNote.findIndex({Text: NoteText});
+
+    console.log(newone);
+
+    newdisplayedNote.splice(newone, 1);
+    console.log(newdisplayedNote);
+
 
 }
 
