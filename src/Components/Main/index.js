@@ -1,3 +1,4 @@
+import e from 'express';
 import React, {useEffect } from 'react';
 var moment = require('moment');
  /*function Note({note, index, createNote, UpdateNote, deleteNote}){
@@ -16,7 +17,9 @@ function Main() {
     ]);
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
 
-
+/* In Create Note You need to search through displaynote and try to match the current 
+title and noteInfo values if there are already present display a warring 
+they need to be unique*/
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
@@ -71,13 +74,26 @@ function DeleteNote(){
     ClearNoteforNew()
 }
 
+function UpdateNote(){  
+    let NewDisplayedNote =[...displayedNote];
+    let NewTitle = document.getElementById("Title").value;
+    let Text = document.getElementById("NoteInfo").value;
+    let NoteTime = TimeNow;
+    let NoteNameIndex = displayedNote.findIndex(function (TitleName) {
+    return TitleName.Text === `${Text}`;
+    });
+    NewDisplayedNote.splice(NoteNameIndex, 1, {NoteName:`${NewTitle}`, Text: `${Text}`, DateTime: `${NoteTime}` });
+    setDisplayedNote(NewDisplayedNote);
+};
+
+
 
 function ButtonView() {
     if(BtnTrigger === false){
         return(
             <div className="NoteButtonFlex">
              <button className="DeleteNoteButton" onClick={DeleteNote}>Delete Note</button>
-             <button className="UpdateNoteButton">Update Note</button>
+             <button className="UpdateNoteButton" onClick={UpdateNote}>Update Note</button>
             </div>
         )
     }
