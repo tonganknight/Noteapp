@@ -93,17 +93,16 @@ border-radius: 23px;
 .NoteTitle{
   margin: 4%;
   height: 40%;
-  width: 50%;
+  width: 90%;
   font-size: 50px; 
    border-bottom: solid black; 
 
 }
 .NoteTime{
-  margin-left: 21%;
   font-size: 30px;
   margin-bottom: 2%;
   margin-top: 3%;
-  height: 8%;
+  width: 75%;
 }
 
 .NoteField{
@@ -147,7 +146,7 @@ font-size: 25px;
   font-weight: bold;
   font-size: 25px;
   height: 25%;
-  width: 25%;
+  width: 75%;
   margin-left: 1%;
   margin-right: 2%;
   margin-top: 3.5%;
@@ -161,7 +160,7 @@ font-size: 25px;
   font-weight: bold;
   font-size: 25px;
   height: 25%;
-  width: 25%;
+  width: 60%;
   margin-left: 1%;
   margin-right: 2%;
   margin-top: 3.5%;
@@ -170,7 +169,7 @@ font-size: 25px;
 
 .Titleinfo{
   height: 60%;
-  font-size: 35px;
+  font-size: 25px;
   margin-bottom: 5%;
   border: none;
   width: 100%;
@@ -185,3 +184,26 @@ font-size: 25px;
   color: black;
   font-size: 35px;
 }
+
+.NoteButtonFlex{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+
+}
+
+.UpdateNoteButton{
+  background-color: blue;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 25px;
+  height: 25%;
+  width: 60%;
+  margin-left: 1%;
+  margin-right: 2%;
+  margin-top: 3.5%;
+  border-radius: 50px;
+}
+

@@ -12,9 +12,10 @@ var moment = require('moment');
 function Main() {
     const TimeNow = moment().format("MMMM Do YYYY, h:mm a");
     const [displayedNote, setDisplayedNote] = React.useState([
-        { Index: 0, NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
+        { NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
     ]);
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
+
 
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
@@ -27,11 +28,7 @@ function CreateNote (){
     console.log(Title);
     console.log(NoteTime);
     console.log(NoteText);
-    let BtnCount = document.getElementById("SavedNotes").childElementCount;
-    console.log("Here is the Element count " + BtnCount);
-    let Count = BtnCount.toString();
-    console.log("there are "+ Count + " Buttons in the saved notes");
-    const newdisplayedNote = [...displayedNote, {Index: BtnCount, NoteName: Title, Text: NoteText, DateTime: TimeNow}];
+    const newdisplayedNote = [...displayedNote, {NoteName: Title, Text: NoteText, DateTime: TimeNow}];
     console.log(newdisplayedNote);
     setDisplayedNote(newdisplayedNote);
     setBtnTrigger(!BtnTrigger);
@@ -48,16 +45,16 @@ function ClearNoteforNew(){
 const GetNote = e =>{
  e.preventDefault();
  setBtnTrigger(false);
- let ClickedBtn = e.target.id;
- console.log(ClickedBtn);
- let LookUpArr =displayedNote.find(place => place.Index == `${ClickedBtn}`);
- console.log(LookUpArr);
- document.getElementById("Title").value= LookUpArr.NoteName;
- document.getElementById("TimeStamp").value = "";
- document.getElementById("NoteInfo").value = LookUpArr.Text;
- let TargetTitle= document.getElementById("Title");
- TargetTitle.setAttribute("data", `${LookUpArr.Index}`);
- console.log(TargetTitle)
+ let ClickedBtn = e.target.innerHTML;
+ console.log("here is the ClickedBtn return " + ClickedBtn);
+ let NoteNameIndex = displayedNote.findIndex(function (TitleName) {
+    return TitleName.NoteName === `${ClickedBtn}`;
+});
+let Note = displayedNote[NoteNameIndex]
+let Title = Note.NoteName;
+let Text = Note.Text;
+document.getElementById("Title").value = Title;
+document.getElementById("NoteInfo").value = Text;
 };
 
 function DeleteNote(){
@@ -71,19 +68,25 @@ function DeleteNote(){
     console.log(NewDisplayedNote);
     setDisplayedNote(NewDisplayedNote);
     setBtnTrigger(true);
+    ClearNoteforNew()
 }
 
 
 function ButtonView() {
     if(BtnTrigger === false){
         return(
+            <div className="NoteButtonFlex">
              <button className="DeleteNoteButton" onClick={DeleteNote}>Delete Note</button>
+             <button className="UpdateNoteButton">Update Note</button>
+            </div>
         )
     }
     if(BtnTrigger === true){
         return(
+        <div className="NoteButtonFlex">
            <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
-        )
+        </div>  
+      )
     }
 }
 
