@@ -1,5 +1,7 @@
 import React, {useEffect } from 'react';
+import {Breakpoint} from 'react-socks'
 var moment = require('moment');
+
 
 function Main() {
     const TimeNow = moment().format("MMMM Do YYYY, h:mm a");
@@ -82,15 +84,19 @@ document.getElementById("NoteInfo").value = Text;
 };
 
 function DeleteNote(){
+    /* find the index of the Title value, and return its undex*/
    let Title = document.getElementById("Title").value;
    let NoteNameIndex = displayedNote.findIndex(function (TitleName) {
             return TitleName.NoteName === `${Title}`;
     });
     console.log(NoteNameIndex);
+    /*splice the returned index from the displayNote*/
     let NewDisplayedNote = [...displayedNote];
     NewDisplayedNote.splice(NoteNameIndex, 1);
     console.log(NewDisplayedNote);
+    /* update the state of with the new displayedNote */
     setDisplayedNote(NewDisplayedNote);
+    /*set the Button state to create Note button, and clear all text area fields */
     setBtnTrigger(true);
     ClearNoteforNew()
 }
@@ -141,6 +147,9 @@ function ButtonView() {
 
 
     return(
+        <div>
+        <Breakpoint large up>
+
         <div className="MainflexLg">
 
             <div className="PadLg">
@@ -184,6 +193,22 @@ function ButtonView() {
             <div className="EventPad">This will be our Events display</div>
 
         </div>
+        </Breakpoint>
+
+        
+
+        <Breakpoint small down>
+
+        <div className="MainflexSm">
+            <div className="PadSm">
+            </div>
+            
+        </div>
+
+
+
+        </Breakpoint>
+</div>
     );
 };
 export default Main
