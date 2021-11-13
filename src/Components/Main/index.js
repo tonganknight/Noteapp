@@ -1,14 +1,5 @@
-import e from 'express';
 import React, {useEffect } from 'react';
 var moment = require('moment');
- /*function Note({note, index, createNote, UpdateNote, deleteNote}){
-
-    return{
-        
-    }
-}
-
-*/
 
 function Main() {
     const TimeNow = moment().format("MMMM Do YYYY, h:mm a");
@@ -16,10 +7,9 @@ function Main() {
         { NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
     ]);
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
+    const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
 
-/* In Create Note You need to search through displaynote and try to match the current 
-title and noteInfo values if there are already present display a warring 
-they need to be unique*/
+
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
@@ -50,6 +40,9 @@ const GetNote = e =>{
  setBtnTrigger(false);
  let ClickedBtn = e.target.innerHTML;
  console.log("here is the ClickedBtn return " + ClickedBtn);
+ let NewCurrentNote=[...CurrentNote];
+ NewCurrentNote.splice(0, 1, {Note: `${ClickedBtn}`});
+ setCurrentNote(NewCurrentNote);
  let NoteNameIndex = displayedNote.findIndex(function (TitleName) {
     return TitleName.NoteName === `${ClickedBtn}`;
 });
@@ -58,6 +51,7 @@ let Title = Note.NoteName;
 let Text = Note.Text;
 document.getElementById("Title").value = Title;
 document.getElementById("NoteInfo").value = Text;
+ 
 };
 
 function DeleteNote(){
@@ -77,13 +71,17 @@ function DeleteNote(){
 function UpdateNote(){  
     let NewDisplayedNote =[...displayedNote];
     let NewTitle = document.getElementById("Title").value;
-    let Text = document.getElementById("NoteInfo").value;
+    let NewText = document.getElementById("NoteInfo").value;
     let NoteTime = TimeNow;
+    console.log(CurrentNote);
+    let NowNote = CurrentNote[0]
+    let Current= NowNote.Note
     let NoteNameIndex = displayedNote.findIndex(function (TitleName) {
-    return TitleName.Text === `${Text}`;
+    return TitleName.NoteName === `${Current}`;
     });
-    NewDisplayedNote.splice(NoteNameIndex, 1, {NoteName:`${NewTitle}`, Text: `${Text}`, DateTime: `${NoteTime}` });
+    NewDisplayedNote.splice(NoteNameIndex, 1, {NoteName:`${NewTitle}`, Text: `${NewText}`, DateTime: `${NoteTime}` });
     setDisplayedNote(NewDisplayedNote);
+    setCurrentNote("");
 };
 
 
