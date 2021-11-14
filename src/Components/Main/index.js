@@ -11,12 +11,11 @@ function Main() {
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
 
-/*Needs to add protection from naming conflicts
-no two notes or titles the same*/
+
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
-    let NoteText = document.getElementById("NoteInfo").value;
+    let NoteText = document.getElementById("NoteText").value;
     /*Check displayedNote for duplicate Note Titles, or Note Text
     if there are none, they should return -1*/ 
     let CheckForTitle = displayedNote.findIndex(function (TitleName) {
@@ -50,7 +49,7 @@ function CreateNote (){
 /*Used to clear Note UI in other functions*/
 function ClearNoteforNew(){
   document.getElementById("Title").value = "";
-  document.getElementById("NoteInfo").value= "";
+  document.getElementById("NoteText").value= "";
   setBtnTrigger(true);
   console.log(BtnTrigger);
 };
@@ -79,7 +78,7 @@ let Title = Note.NoteName;
 let Text = Note.Text;
 /*Assigns the Note to the text areas*/
 document.getElementById("Title").value = Title;
-document.getElementById("NoteInfo").value = Text;
+document.getElementById("NoteText").value = Text;
  
 };
 
@@ -105,7 +104,7 @@ function UpdateNote(){
     /*creating targets */
     let NewDisplayedNote =[...displayedNote];
     let NewTitle = document.getElementById("Title").value;
-    let NewText = document.getElementById("NoteInfo").value;
+    let NewText = document.getElementById("NoteText").value;
     let NoteTime = TimeNow;
    /*Taking the Current saved Note. This should be the note you clicked on 
    then Destructing that to get the Title of the note you clicked*/
@@ -124,27 +123,30 @@ function UpdateNote(){
 
 
 function NoteMenuShow(){
-/*resize menu and show content*/
-  document.getElementById("NoteMenu").style.width="100%";
-  document.getElementById("MenuButton").style.display= "none"
-  
 /*hide flexboxes */
   document.getElementById("NoteInfoSectionSm").style.display = "none";
   document.getElementById("NoteFlexSmBox").style.display = "none";
   document.getElementById("EventMenuButton").style.display = "none";
   document.getElementById("EventMenu").style.display = "none";
+
+/*resize menu and show content*/
+  document.getElementById("NoteMenu").style.width="100%";
+  document.getElementById("MenuButton").style.display= "none"
+  document.getElementById("NoteContentControler").style.display = "flex"
 }
 
 function NoteMenuClose(){
-    document.getElementById("NoteMenu").style.width="1%";
-    document.getElementById("MenuButton").style.display= "flex"
 
+    /*changes display of flex boxes to flex so we can see them*/
     document.getElementById("NoteInfoSectionSm").style.display = "flex";
     document.getElementById("NoteFlexSmBox").style.display = "flex";
     document.getElementById("EventMenuButton").style.display = "flex";
     document.getElementById("EventMenu").style.display = "flex";
 
-
+    /*resizes menu and hides content. Shows main flex"*/
+    document.getElementById("NoteMenu").style.width="1%";
+    document.getElementById("MenuButton").style.display= "flex"
+    document.getElementById("NoteContentControler").style.display = "none"
 }
 
 
@@ -239,9 +241,9 @@ function ButtonView() {
         <div id="MainFlexBoxSm" className="MainflexSm">
 
             <div id="NoteMenu" className="PadSm">
-                <div className="NoteControlFlex">
+                <div id="NoteContentControler" className="NoteControlFlex">
                     <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
-                    
+
 
             </div>
 
