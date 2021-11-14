@@ -15,7 +15,7 @@ function Main() {
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
-    let NoteText = document.getElementById("NoteText").value;
+    let NoteText = document.getElementById("NoteInfo").value;
     /*Check displayedNote for duplicate Note Titles, or Note Text
     if there are none, they should return -1*/ 
     let CheckForTitle = displayedNote.findIndex(function (TitleName) {
@@ -49,7 +49,7 @@ function CreateNote (){
 /*Used to clear Note UI in other functions*/
 function ClearNoteforNew(){
   document.getElementById("Title").value = "";
-  document.getElementById("NoteText").value= "";
+  document.getElementById("NoteInfo").value= "";
   setBtnTrigger(true);
   console.log(BtnTrigger);
 };
@@ -78,7 +78,7 @@ let Title = Note.NoteName;
 let Text = Note.Text;
 /*Assigns the Note to the text areas*/
 document.getElementById("Title").value = Title;
-document.getElementById("NoteText").value = Text;
+document.getElementById("NoteInfo").value = Text;
  
 };
 
@@ -104,7 +104,7 @@ function UpdateNote(){
     /*creating targets */
     let NewDisplayedNote =[...displayedNote];
     let NewTitle = document.getElementById("Title").value;
-    let NewText = document.getElementById("NoteText").value;
+    let NewText = document.getElementById("NoteInfo").value;
     let NoteTime = TimeNow;
    /*Taking the Current saved Note. This should be the note you clicked on 
    then Destructing that to get the Title of the note you clicked*/
@@ -121,6 +121,7 @@ function UpdateNote(){
     setDisplayedNote(NewDisplayedNote);
 };
 
+/*Mobile Functions*/
 
 function NoteMenuShow(){
 /*hide flexboxes */
@@ -149,6 +150,42 @@ function NoteMenuClose(){
     document.getElementById("NoteContentControler").style.display = "none"
 }
 
+function MobileClearNoteforNew(){
+    ClearNoteforNew();
+    NoteMenuClose();
+}
+
+const GetNoteMobile= e=>{
+    /*Working here*/
+    NoteMenuClose()
+
+    /*setting button state*/
+ setBtnTrigger(false);
+ /*getting the name of the saved Button*/
+ let ClickedBtn = e.target.innerHTML;
+ console.log("here is the ClickedBtn return " + ClickedBtn);
+ /*Removed the current button state, and add the title of the saved button
+  you clicked to the CurrentNote State*/
+ let NewCurrentNote=[...CurrentNote];
+ NewCurrentNote.splice(0, 1, {Note: `${ClickedBtn}`});
+ setCurrentNote(NewCurrentNote);
+ /* Search through displayedNote for the Name of the Saved Button
+ you Clicked and returns the position in the Array*/
+ let NoteNameIndex = displayedNote.findIndex(function (TitleName) {
+    return TitleName.NoteName === `${ClickedBtn}`;
+});
+/*Takes the position of NoteNameIndex and Searches 
+displayedNote. Then  deconstructs displayedNote*/
+let Note = displayedNote[NoteNameIndex]
+let Title = Note.NoteName;
+let Text = Note.Text;
+/*Assigns the Note to the text areas*/
+document.getElementById("Title").value = Title;
+document.getElementById("NoteInfo").value = Text;
+ 
+};
+
+
 
 
 
@@ -160,6 +197,12 @@ function ButtonView() {
             <div className="NoteButtonFlex">
              <button className="DeleteNoteButton" onClick={DeleteNote}>Delete Note</button>
              <button className="UpdateNoteButton" onClick={UpdateNote}>Update Note</button>
+            </div>
+            </Breakpoint>
+            <Breakpoint small down>
+            <div className="NoteButtonFlex">
+             <button className="DeleteNoteButtonSm" onClick={DeleteNote}>Delete Note</button>
+             <button className="UpdateNoteButtonSm" onClick={UpdateNote}>Update Note</button>
             </div>
             </Breakpoint>
             
@@ -242,7 +285,24 @@ function ButtonView() {
 
             <div id="NoteMenu" className="PadSm">
                 <div id="NoteContentControler" className="NoteControlFlex">
-                    <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
+                   
+                 <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
+
+                 <div className="PadTitle">Your Pad</div>
+
+                <button  onClick={MobileClearNoteforNew}className="CreateButtonSm" >Create New Note +</button>
+               <button className="CreateButtonSm"> Create New Event +</button>
+
+               <div id="SavedNotes" className="SavedNotesFlexSm">
+                {displayedNote.map(note =>{
+
+                    return(
+                        <div>
+                        <div className="NoteDate">{note.DateTime}</div>
+                        <button id={note.Index} key={note.Index} onClick={GetNoteMobile}className="NoteItem">{note.NoteName}</button>
+                        </div>
+        )})}                    
+               </div>
 
 
             </div>
@@ -253,20 +313,20 @@ function ButtonView() {
                 <div className="MenuNoteButtonSm" onClick={NoteMenuShow}></div>
             </div>
             
-            <div  id="NoteFlexSmBox"className="NoteFlexSm">
-                <div id="NoteInfoSectionSm" className="NoteInfoSm">
-                    <div className="NoteTitleSm">
+                <div id="NoteFlexSmBox"className="NoteFlexSm">
+                    <div id="NoteInfoSectionSm" className="NoteInfoSm">
+                        <div className="NoteTitleSm">
 
-                    <ButtonView/>
+                        <ButtonView/>
 
                         <input id="Title" className="TitleinfoSm"></input>
                     </div>
+
                     <div className="NoteTimeSm"id="TimeStamp">{TimeNow}
                     </div>
 
-
-
                 </div>
+
                 <div className="NoteText">
                     <textarea id="NoteInfo" className="NoteText"></textarea>
                 </div>
