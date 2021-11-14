@@ -74,7 +74,6 @@ border-radius: 23px;
   flex-direction: column;
   height: 100%;
   width: 50%;
-
 }
 
 .NoteInfo{
@@ -92,17 +91,17 @@ border-radius: 23px;
 
 .NoteTitle{
   margin: 4%;
-  height: 40%;
   width: 90%;
   font-size: 50px; 
    border-bottom: solid black; 
 
 }
 .NoteTime{
-  font-size: 30px;
+  font-size: 25px;
   margin-bottom: 2%;
   margin-top: 3%;
   width: 75%;
+  opacity: 0.5;
 }
 
 .NoteField{
@@ -145,8 +144,8 @@ font-size: 25px;
   color: whitesmoke;
   font-weight: bold;
   font-size: 25px;
-  height: 25%;
-  width: 75%;
+  height: 100%;
+  width: 100%;
   margin-left: 1%;
   margin-right: 2%;
   margin-top: 3.5%;
@@ -216,6 +215,7 @@ font-size: 25px;
   width: 100%;
   margin: 0px;
   padding: 0px;
+  visibility: visible;
 }
 
 .PadSm{
@@ -224,6 +224,155 @@ font-size: 25px;
   text-decoration: none;
   color: whitesmoke;
   background-color: var(--Bootstrap-black);
-  width: 10%;
+  width: 1%;
+  height: 100%;
+  visibility: visible;
+}
+
+.PadEventSm{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: var(--Bootstrap-black);
+  width: 1%;
+  height: 100%;
+  visibility: visible;
+}
+
+
+
+.PadEventSm{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: var(--primary-color);
+  width: 1%;
   height: 100%;
 }
+
+.PadButtonSm{
+  display: flex;
+  background-color: var(--Bootstrap-black);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 13%;
+  visibility: visible;
+}
+
+.PadEventButtonSm{
+  display: flex;
+  background-color: var(--primary-color);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 13%;
+  visibility: visible;
+}
+
+.MenuNoteButtonSm{
+  height: 5%;
+  width: 100%;
+  border-radius: 100%;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/essential-rounded/66/Rounded-14-256.png");
+  background-size: cover;
+  background-position-x: 30%;
+}
+
+.MenuEventButtonSm{
+  height: 5%;
+  width: 100%;
+  border-radius: 100%;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/essential-rounded/66/Rounded-14-256.png");
+  background-size: cover;
+  background-position-x: 30%;
+  transform: scaleX(-1);
+}
+
+.NoteFlexSm{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 71%;
+}
+/*the box that holds the text area*/
+.NoteInfoSm{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.NoteTitleSm{
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 50px; 
+}
+
+.NoteTimeSm{
+  font-size: 13px;
+  margin-bottom: 2%;
+  margin-top: 3%;
+  width: 100%;
+  margin-left: 10%;
+  opacity: 0.5;
+}
+
+.CreateNoteButtonSm{
+  background-color: rgba(0, 255, 0, 0.3);
+  color: var(--Bootstrap-black);
+  border: solid rgba(0, 255, 0, 0.3);
+  font-size: 25px;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  margin-top: 3.5%;
+  width: 93%;
+}
+
+.TitleinfoSm{
+  font-size: 25px;
+  margin-bottom: 5%;
+  border: none;
+  width: 100%;
+  border-bottom: solid black;
+}
+
+.NoteButtonFlexSm{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.NoteText{
+  display: flex;
+  width: 92%;
+  margin: 4%;
+  height: 100%;
+  border: none;
+  font-size: 17px;
+}
+
+.NoteControlFlex{
+ display: flex;
+ flex-direction: column;
+ height: 100%;
+ width: 100%;
+}
+
+.CloseNoteMenu{
+  align-self: flex-end ;
+  height: 35px;
+  width: 35px;
+ background-color: whitesmoke;
+ background-image: url("https://cdn3.iconfinder.com/data/icons/iconic-1/32/x_alt-256.png");
+ background-size: cover;
+ border-radius: 100%;
+ margin-top: 2%;
+ margin-right: 2%;
+
+}
+

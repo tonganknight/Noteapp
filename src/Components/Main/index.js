@@ -123,31 +123,68 @@ function UpdateNote(){
 };
 
 
+function NoteMenuShow(){
+/*resize menu and show content*/
+  document.getElementById("NoteMenu").style.width="100%";
+  document.getElementById("MenuButton").style.display= "none"
+  
+/*hide flexboxes */
+  document.getElementById("NoteInfoSectionSm").style.display = "none";
+  document.getElementById("NoteFlexSmBox").style.display = "none";
+  document.getElementById("EventMenuButton").style.display = "none";
+  document.getElementById("EventMenu").style.display = "none";
+}
 
-function ButtonView() {
-    if(BtnTrigger === false){
-        return(
-            <div className="NoteButtonFlex">
-             <button className="DeleteNoteButton" onClick={DeleteNote}>Delete Note</button>
-             <button className="UpdateNoteButton" onClick={UpdateNote}>Update Note</button>
-            </div>
-        )
-    }
-    if(BtnTrigger === true){
-        return(
-        <div className="NoteButtonFlex">
-           <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
-        </div>  
-      )
-    }
+function NoteMenuClose(){
+    document.getElementById("NoteMenu").style.width="1%";
+    document.getElementById("MenuButton").style.display= "flex"
+
+    document.getElementById("NoteInfoSectionSm").style.display = "flex";
+    document.getElementById("NoteFlexSmBox").style.display = "flex";
+    document.getElementById("EventMenuButton").style.display = "flex";
+    document.getElementById("EventMenu").style.display = "flex";
+
+
 }
 
 
 
 
+function ButtonView() {
+    if(BtnTrigger === false){
+        return(
+        <div>
+            <Breakpoint large up>
+            <div className="NoteButtonFlex">
+             <button className="DeleteNoteButton" onClick={DeleteNote}>Delete Note</button>
+             <button className="UpdateNoteButton" onClick={UpdateNote}>Update Note</button>
+            </div>
+            </Breakpoint>
+            
+        </div>
+        )
+    }
+    if(BtnTrigger === true){
+        return(
+            <div>
+                <Breakpoint large up>
+                     <div className="NoteButtonFlex">
+                        <button className="CreateNoteButton" onClick={CreateNote}>Create Note</button>
+                    </div>
+                </Breakpoint>
+                <Breakpoint small down>
+                <div className="NoteButtonFlexSm">
+                        <button className="CreateNoteButtonSm" onClick={CreateNote}>Create Note</button>
+                </div>
+
+                </Breakpoint>
+            </div>
+      )
+    }
+}
 
     return(
-        <div>
+    <div>
         <Breakpoint large up>
 
         <div className="MainflexLg">
@@ -184,8 +221,8 @@ function ButtonView() {
                 <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
                 <ButtonView/>
                 </div>
-                <div className="NoteText">
-                    <textarea id="NoteInfo" className="NoteText"></textarea>
+                <div id="NoteInfoText" className="NoteText">
+                    <textarea id="NoteText" className="NoteText"></textarea>
                 </div>
               
             </div>
@@ -199,14 +236,59 @@ function ButtonView() {
 
         <Breakpoint small down>
 
-        <div className="MainflexSm">
-            <div className="PadSm">
+        <div id="MainFlexBoxSm" className="MainflexSm">
+
+            <div id="NoteMenu" className="PadSm">
+                <div className="NoteControlFlex">
+                    <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
+                    
+
+            </div>
+
+            </div>
+
+            <div id="MenuButton"className="PadButtonSm">
+                <div className="MenuNoteButtonSm" onClick={NoteMenuShow}></div>
             </div>
             
+            <div  id="NoteFlexSmBox"className="NoteFlexSm">
+                <div id="NoteInfoSectionSm" className="NoteInfoSm">
+                    <div className="NoteTitleSm">
+
+                    <ButtonView/>
+
+                        <input id="Title" className="TitleinfoSm"></input>
+                    </div>
+                    <div className="NoteTimeSm"id="TimeStamp">{TimeNow}
+                    </div>
+
+
+
+                </div>
+                <div className="NoteText">
+                    <textarea id="NoteInfo" className="NoteText"></textarea>
+                </div>
+                    
+            </div>
+
+            <div id="EventMenuButton" className="PadEventButtonSm">
+                <div className="MenuEventButtonSm" onClick={NoteMenuShow}></div>
+            </div>
+        
+            <div id="EventMenu" className="PadEventSm">
+
+
+            </div>
+            
+            
+        
+        
         </div>
 
+            
 
-
+           
+        
         </Breakpoint>
 </div>
     );
