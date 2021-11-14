@@ -15,7 +15,7 @@ function Main() {
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
     let NoteTime = TimeNow;
-    let NoteText = document.getElementById("NoteInfo").value;
+    let NoteText = document.getElementById("NoteText").value;
     /*Check displayedNote for duplicate Note Titles, or Note Text
     if there are none, they should return -1*/ 
     let CheckForTitle = displayedNote.findIndex(function (TitleName) {
@@ -49,7 +49,7 @@ function CreateNote (){
 /*Used to clear Note UI in other functions*/
 function ClearNoteforNew(){
   document.getElementById("Title").value = "";
-  document.getElementById("NoteInfo").value= "";
+  document.getElementById("NoteText").value= "";
   setBtnTrigger(true);
   console.log(BtnTrigger);
 };
@@ -78,7 +78,7 @@ let Title = Note.NoteName;
 let Text = Note.Text;
 /*Assigns the Note to the text areas*/
 document.getElementById("Title").value = Title;
-document.getElementById("NoteInfo").value = Text;
+document.getElementById("NoteText").value = Text;
  
 };
 
@@ -104,7 +104,7 @@ function UpdateNote(){
     /*creating targets */
     let NewDisplayedNote =[...displayedNote];
     let NewTitle = document.getElementById("Title").value;
-    let NewText = document.getElementById("NoteInfo").value;
+    let NewText = document.getElementById("NoteText").value;
     let NoteTime = TimeNow;
    /*Taking the Current saved Note. This should be the note you clicked on 
    then Destructing that to get the Title of the note you clicked*/
@@ -136,6 +136,23 @@ function NoteMenuShow(){
   document.getElementById("NoteContentControler").style.display = "flex"
 }
 
+function EventMenuShow(){
+    /*hide divisions*/
+    document.getElementById("NoteInfoSectionSm").style.display = "none";
+    document.getElementById("NoteFlexSmBox").style.display = "none";
+    document.getElementById("EventMenuButton").style.display = "none";
+    document.getElementById("NoteContentControler").style.display = "flex";
+    document.getElementById("MenuButton").style.display ="none";
+    document.getElementById("NoteMenu").style.display= "none";
+
+    document.getElementById("EventMenu").style.width ="100%";
+    
+
+
+
+
+}
+
 function NoteMenuClose(){
 
     /*changes display of flex boxes to flex so we can see them*/
@@ -155,10 +172,23 @@ function MobileClearNoteforNew(){
     NoteMenuClose();
 }
 
+function CreateNoteMobile(){
+    CreateNote();
+    NoteMenuShow();
+}
+
+function DeleteNoteMobie(){
+    DeleteNote();
+    NoteMenuShow();
+}
+function UpdateNoteMobile(){
+    UpdateNote();
+    NoteMenuShow();
+}
+
 const GetNoteMobile= e=>{
     /*Working here*/
     NoteMenuClose()
-
     /*setting button state*/
  setBtnTrigger(false);
  /*getting the name of the saved Button*/
@@ -181,9 +211,11 @@ let Title = Note.NoteName;
 let Text = Note.Text;
 /*Assigns the Note to the text areas*/
 document.getElementById("Title").value = Title;
-document.getElementById("NoteInfo").value = Text;
+document.getElementById("NoteText").value = Text;
  
 };
+
+
 
 
 
@@ -201,8 +233,8 @@ function ButtonView() {
             </Breakpoint>
             <Breakpoint small down>
             <div className="NoteButtonFlex">
-             <button className="DeleteNoteButtonSm" onClick={DeleteNote}>Delete Note</button>
-             <button className="UpdateNoteButtonSm" onClick={UpdateNote}>Update Note</button>
+             <button className="DeleteNoteButtonSm" onClick={DeleteNoteMobie}>Delete Note</button>
+             <button className="UpdateNoteButtonSm" onClick={UpdateNoteMobile}>Update Note</button>
             </div>
             </Breakpoint>
             
@@ -219,7 +251,7 @@ function ButtonView() {
                 </Breakpoint>
                 <Breakpoint small down>
                 <div className="NoteButtonFlexSm">
-                        <button className="CreateNoteButtonSm" onClick={CreateNote}>Create Note</button>
+                        <button className="CreateNoteButtonSm" onClick={CreateNoteMobile}>Create Note</button>
                 </div>
 
                 </Breakpoint>
@@ -266,7 +298,7 @@ function ButtonView() {
                 <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
                 <ButtonView/>
                 </div>
-                <div id="NoteInfoText" className="NoteText">
+                <div id="NoteInfoText" className="NoteTextBox">
                     <textarea id="NoteText" className="NoteText"></textarea>
                 </div>
               
@@ -327,14 +359,14 @@ function ButtonView() {
 
                 </div>
 
-                <div className="NoteText">
-                    <textarea id="NoteInfo" className="NoteText"></textarea>
+                <div className="NoteInfoText">
+                    <textarea id="NoteText" className="NoteTextBoxSm"></textarea>
                 </div>
                     
             </div>
 
             <div id="EventMenuButton" className="PadEventButtonSm">
-                <div className="MenuEventButtonSm" onClick={NoteMenuShow}></div>
+                <div className="MenuEventButtonSm" onClick={EventMenuShow}></div>
             </div>
         
             <div id="EventMenu" className="PadEventSm">

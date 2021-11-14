@@ -374,7 +374,7 @@ font-size: 25px;
   align-items: center;
 }
 
-.NoteText{
+.NoteTextBox{
   display: flex;
   width: 92%;
   margin: 4%;
@@ -421,4 +421,19 @@ font-size: 25px;
   width: 90%;
   overflow-y: scroll;
   background-color: whitesmoke;
+}
+
+.NoteInfoText{
+  display: flex;
+  height: 100%;
+}
+
+
+.NoteTextBoxSm{
+  display: flex;
+  width: 92%;
+  margin: 4%;
+  height: 100%;
+  border: none;
+  font-size: 25px;
 }
