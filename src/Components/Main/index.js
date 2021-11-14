@@ -141,17 +141,25 @@ function EventMenuShow(){
     document.getElementById("NoteInfoSectionSm").style.display = "none";
     document.getElementById("NoteFlexSmBox").style.display = "none";
     document.getElementById("EventMenuButton").style.display = "none";
-    document.getElementById("NoteContentControler").style.display = "flex";
+    document.getElementById("EventContentControler").style.display = "flex";
     document.getElementById("MenuButton").style.display ="none";
     document.getElementById("NoteMenu").style.display= "none";
 
     document.getElementById("EventMenu").style.width ="100%";
     
-
-
-
-
 }
+function EventMenuClose(){
+/*Show divisions*/
+    document.getElementById("NoteInfoSectionSm").style.display = "flex";
+    document.getElementById("NoteFlexSmBox").style.display = "flex";
+    document.getElementById("EventMenuButton").style.display = "flex";
+    document.getElementById("EventContentControler").style.display = "none";
+    document.getElementById("MenuButton").style.display ="flex";
+    document.getElementById("NoteMenu").style.display= "flex";
+
+    document.getElementById("EventMenu").style.width ="1%";
+}
+
 
 function NoteMenuClose(){
 
@@ -163,8 +171,8 @@ function NoteMenuClose(){
 
     /*resizes menu and hides content. Shows main flex"*/
     document.getElementById("NoteMenu").style.width="1%";
-    document.getElementById("MenuButton").style.display= "flex"
-    document.getElementById("NoteContentControler").style.display = "none"
+    document.getElementById("MenuButton").style.display= "flex";
+    document.getElementById("NoteContentControler").style.display = "none";
 }
 
 function MobileClearNoteforNew(){
@@ -370,8 +378,9 @@ function ButtonView() {
             </div>
         
             <div id="EventMenu" className="PadEventSm">
-
-
+                <div id="EventContentControler" className="EventControlFlex">
+                    <div className="CloseNoteMenu" onClick={EventMenuClose}></div>
+                </div>
             </div>
             
             

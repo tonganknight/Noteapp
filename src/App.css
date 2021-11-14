@@ -237,7 +237,6 @@ font-size: 25px;
   background-color: var(--Bootstrap-black);
   width: 1%;
   height: 100%;
-  visibility: visible;
 }
 
 
@@ -388,6 +387,13 @@ font-size: 25px;
  flex-direction: column;
  height: 100%;
  width: 100%;
+}
+
+.EventControlFlex{
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .CloseNoteMenu{
