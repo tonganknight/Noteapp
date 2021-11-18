@@ -223,12 +223,6 @@ document.getElementById("NoteText").value = Text;
  
 };
 
-
-
-
-
-
-
 function ButtonView() {
     if(BtnTrigger === false){
         return(
@@ -331,7 +325,7 @@ function ButtonView() {
                  <div className="PadTitle">Your Pad</div>
 
                 <button  onClick={MobileClearNoteforNew}className="CreateButtonSm" >Create New Note +</button>
-               <button className="CreateButtonSm"> Create New Event +</button>
+               
 
                <div id="SavedNotes" className="SavedNotesFlexSm">
                 {displayedNote.map(note =>{
@@ -350,7 +344,7 @@ function ButtonView() {
             </div>
 
             <div id="MenuButton"className="PadButtonSm">
-                <div className="MenuNoteButtonSm" onClick={NoteMenuShow}></div>
+                <div className="MenuNoteButtonSm" onClick={NoteMenuShow}>Notes</div>
             </div>
             
                 <div id="NoteFlexSmBox"className="NoteFlexSm">
@@ -374,12 +368,30 @@ function ButtonView() {
             </div>
 
             <div id="EventMenuButton" className="PadEventButtonSm">
-                <div className="MenuEventButtonSm" onClick={EventMenuShow}></div>
+                
+                    <div className="MenuEventButtonSm" onClick={EventMenuShow}>Events</div>
+                
+                  
+                        
             </div>
         
             <div id="EventMenu" className="PadEventSm">
                 <div id="EventContentControler" className="EventControlFlex">
                     <div className="CloseNoteMenu" onClick={EventMenuClose}></div>
+                    <div className="EventTitleSm">Events</div>
+            <div id ="UpcomingEvents" className="UpcomingEventsFlexSm"></div> 
+
+
+                <button className="CreateEventButtonSm"> Create New Event +</button>
+                
+                
+
+                <div className="NoteAssignFlex">
+
+               
+
+                </div>
+
                 </div>
             </div>
             
