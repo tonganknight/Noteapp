@@ -413,6 +413,18 @@ font-size: 25px;
  margin-right: 2%;
 }
 
+.CloseEventNoteMenu{
+  align-self: flex-end ;
+  height: 15%;
+  width: 35px;
+ background-color: whitesmoke;
+ background-image: url("https://cdn3.iconfinder.com/data/icons/iconic-1/32/x_alt-256.png");
+ background-size: cover;
+ border-radius: 100%;
+ margin-top: 2%;
+ margin-right: 2%;
+}
+
 .CreateButtonSm{
   background-color: var(--primary-color);
   color: var(--whiteText);
@@ -487,7 +499,6 @@ font-size: 25px;
 
 .NoteAssignFlex{
   display: flex;
-  align-items: center;
   height: 100%;
   width: 100%;
 
@@ -499,3 +510,58 @@ font-size: 25px;
   font-weight: bold;
   width: 100%;
 }
+
+.SelectedEventTimeSm{
+  text-align: center;
+  font-family: 'Zen Dots', cursive;
+  margin-top: 5%;
+  font-size: 15px;
+}
+
+.SelectedEventTitleFlexSm{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.SelectedEventTitleSm{
+  font-family: 'Zen Dots', cursive;
+  font-weight: bold;
+  margin-top: 5%;
+  text-align: center;
+  border-bottom: solid whitesmoke;
+  padding-bottom:2%;
+}
+
+.SelectedEventDetailsSm{
+  font-family: 'Zen Dots', cursive;
+  font-size: 10px;
+  margin: 6%;
+  margin-top: 2%;
+  border: solid whitesmoke;
+  height: 100%;
+  width: 87%;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.SelectedEventDetailSm{
+  margin-left: 5%;
+  margin: 5%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-family: 'Zen Dots', cursive;
+  opacity: 0.3;
+}
+
+.SavedNotesEventsFlexSm{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  height: 90%;
+  width: 90%;
+  overflow-y: scroll;
+  background-color: whitesmoke;
+}
+

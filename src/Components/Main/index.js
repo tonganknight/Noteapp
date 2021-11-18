@@ -377,17 +377,35 @@ function ButtonView() {
         
             <div id="EventMenu" className="PadEventSm">
                 <div id="EventContentControler" className="EventControlFlex">
-                    <div className="CloseNoteMenu" onClick={EventMenuClose}></div>
+                    <div className="CloseEventNoteMenu" onClick={EventMenuClose}></div>
                     <div className="EventTitleSm">Events</div>
             <div id ="UpcomingEvents" className="UpcomingEventsFlexSm"></div> 
 
 
                 <button className="CreateEventButtonSm"> Create New Event +</button>
+
+                <div className="SelectedEventTimeSm">November 17th, 2021</div>
                 
+                <div className="SelectedEventTitleFlexSm">
+                <div className="SelectedEventTitleSm">Doctors Appointment</div>
+                </div>
+
+                <div className="SelectedEventDetailSm">Details</div>
                 
+                <div className="SelectedEventDetailsSm">Drop Note Here</div>
 
                 <div className="NoteAssignFlex">
 
+                <div id="SavedNotes" className="SavedNotesEventsFlexSm">
+                {displayedNote.map(note =>{
+
+                    return(
+                        <div>
+                        <div className="NoteDate">{note.DateTime}</div>
+                        <button id={note.Index} key={note.Index} onClick={GetNoteMobile}className="NoteItem">{note.NoteName}</button>
+                        </div>
+        )})}                    
+               </div>
                
 
                 </div>
