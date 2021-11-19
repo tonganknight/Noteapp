@@ -478,8 +478,7 @@ font-size: 25px;
 
 .UpcomingEventsFlexSm{
   display: flex;
-  width: 90%;
-  height: 15%;
+  height: 50%;
   margin-top: 5%;
   align-self: center;
   background-color: whitesmoke;
@@ -542,6 +541,7 @@ font-size: 25px;
   border: solid whitesmoke;
   height: 100%;
   width: 87%;
+  font-size: 15px;
   text-align: center;
   overflow-y: scroll;
 }
@@ -565,3 +565,17 @@ font-size: 25px;
   background-color: whitesmoke;
 }
 
+.EventButtonFlexSm{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+
+}
+
+.ClickMeDiv{
+  text-align: center;
+  font-family: 'Zen Dots', cursive;
+  margin-top: 2%;
+  font-weight: bold;
+  font-size: 20px;
+}

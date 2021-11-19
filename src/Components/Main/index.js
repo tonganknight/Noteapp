@@ -8,9 +8,14 @@ function Main() {
     const [displayedNote, setDisplayedNote] = React.useState([
         { NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
     ]);
+    const [Events, setEvents]= React.useState([
+        {EventTitle: "Doctors Appointment", EventDate: "December 1, 2021", EventDetails: "Bring the Eggnog"}
+    ]);
+    /*controls the state of the NoteButtons for CRUD*/
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
+    /*controls the current clicked note passes state it for array manipulation*/
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
-
+    
 
 function CreateNote (){
     let Title =  document.getElementById("Title").value;
@@ -185,7 +190,7 @@ function CreateNoteMobile(){
     NoteMenuShow();
 }
 
-function DeleteNoteMobie(){
+function DeleteNoteMobile(){
     DeleteNote();
     NoteMenuShow();
 }
@@ -223,6 +228,25 @@ document.getElementById("NoteText").value = Text;
  
 };
 
+const GetEvent = e =>{
+e.preventDefault();
+let ClickedButton = e.target.innerHTML;
+let EventTitleIndex = Events.findIndex(function (EventIndex){
+    return EventIndex.EventTitle === `${ClickedButton}`;
+})
+let NewEvent= Events[EventTitleIndex];
+let EventTitle = NewEvent.EventTitle;
+let EventTime = NewEvent.EventDate;
+let EventContent = NewEvent.EventDetails;
+document.getElementById("EventTime").innerText = EventTime;
+document.getElementById("EventTitle").innerText = EventTitle;
+document.getElementById("EventDetails").innerText =EventContent;
+}
+
+
+
+
+
 function ButtonView() {
     if(BtnTrigger === false){
         return(
@@ -235,7 +259,7 @@ function ButtonView() {
             </Breakpoint>
             <Breakpoint small down>
             <div className="NoteButtonFlex">
-             <button className="DeleteNoteButtonSm" onClick={DeleteNoteMobie}>Delete Note</button>
+             <button className="DeleteNoteButtonSm" onClick={DeleteNoteMobile}>Delete Note</button>
              <button className="UpdateNoteButtonSm" onClick={UpdateNoteMobile}>Update Note</button>
             </div>
             </Breakpoint>
@@ -291,6 +315,8 @@ function ButtonView() {
                         </div>
         )})}                    
                </div>
+            
+        
 
             </div>
 
@@ -326,7 +352,7 @@ function ButtonView() {
 
                 <button  onClick={MobileClearNoteforNew}className="CreateButtonSm" >Create New Note +</button>
                
-
+                <div className="ClickMeDiv">Click to See Your Note!</div>
                <div id="SavedNotes" className="SavedNotesFlexSm">
                 {displayedNote.map(note =>{
 
@@ -346,6 +372,8 @@ function ButtonView() {
             <div id="MenuButton"className="PadButtonSm">
                 <div className="MenuNoteButtonSm" onClick={NoteMenuShow}>Notes</div>
             </div>
+
+            
             
                 <div id="NoteFlexSmBox"className="NoteFlexSm">
                     <div id="NoteInfoSectionSm" className="NoteInfoSm">
@@ -367,6 +395,10 @@ function ButtonView() {
                     
             </div>
 
+        
+
+  
+
             <div id="EventMenuButton" className="PadEventButtonSm">
                 
                     <div className="MenuEventButtonSm" onClick={EventMenuShow}>Events</div>
@@ -379,20 +411,30 @@ function ButtonView() {
                 <div id="EventContentControler" className="EventControlFlex">
                     <div className="CloseEventNoteMenu" onClick={EventMenuClose}></div>
                     <div className="EventTitleSm">Events</div>
-            <div id ="UpcomingEvents" className="UpcomingEventsFlexSm"></div> 
+            <div id ="UpcomingEvents" className="UpcomingEventsFlexSm">
+                    {Events.map((button, index) =>{
+                    return(
+                    <div>
+                    <div className="NoteDate">{button.EventDate}</div>
+                    <button  key={index} className="NoteItem" onClick={GetEvent}>{button.EventTitle}</button>
+                    </div>
+
+                    )})}
+                
+            </div> 
 
 
                 <button className="CreateEventButtonSm"> Create New Event +</button>
 
-                <div className="SelectedEventTimeSm">November 17th, 2021</div>
+                <div id="EventTime" className="SelectedEventTimeSm"></div>
                 
                 <div className="SelectedEventTitleFlexSm">
-                <div className="SelectedEventTitleSm">Doctors Appointment</div>
+                <div id="EventTitle"className="SelectedEventTitleSm"></div>
                 </div>
 
                 <div className="SelectedEventDetailSm">Details</div>
                 
-                <div className="SelectedEventDetailsSm">Drop Note Here</div>
+                <div id="EventDetails" className="SelectedEventDetailsSm"></div>
 
                 <div className="NoteAssignFlex">
 
@@ -402,7 +444,7 @@ function ButtonView() {
                     return(
                         <div>
                         <div className="NoteDate">{note.DateTime}</div>
-                        <button id={note.Index} key={note.Index} onClick={GetNoteMobile}className="NoteItem">{note.NoteName}</button>
+                        <button id={note.Index} key={note.Index} className="NoteItem">{note.NoteName}</button>
                         </div>
         )})}                    
                </div>
