@@ -323,9 +323,10 @@ function ButtonView() {
             <div className="NoteFlex">
                 <div className="NoteInfo">
                 <div className="NoteTitle"><input id="Title" className="Titleinfo"></input></div>
-                <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
+               
                 <ButtonView/>
                 </div>
+                 <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
                 <div id="NoteInfoText" className="NoteTextBox">
                     <textarea id="NoteText" className="NoteText"></textarea>
                 </div>

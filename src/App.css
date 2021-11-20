@@ -90,8 +90,10 @@ border-radius: 23px;
 }
 
 .NoteTitle{
-  margin: 4%;
-  width: 90%;
+  margin-left: 4%;
+  margin-top: 4%;
+  margin-right: 4%;
+  width: 45%;
   font-size: 50px; 
    border-bottom: solid black; 
 
@@ -99,7 +101,7 @@ border-radius: 23px;
 .NoteTime{
   font-size: 25px;
   margin-bottom: 2%;
-  margin-top: 3%;
+  margin-left: 4%;
   width: 75%;
   opacity: 0.5;
 }
@@ -140,38 +142,33 @@ font-size: 25px;
 }
 
 .CreateNoteButton{
-  background-color: Green;
+  background-image: linear-gradient(
+     #63c132 0%, #63c132 52%);
+  border: solid rgba(0, 255, 0, 0.3);
   color: whitesmoke;
-  font-weight: bold;
-  font-size: 25px;
-  height: 100%;
+  font-size: 30px;
   width: 100%;
-  margin-left: 1%;
-  margin-right: 2%;
-  margin-top: 3.5%;
-  border-radius: 50px;
-
+  margin-top: 20%;
+  font-family: 'Zen Dots', cursive;
 }
 
 .DeleteNoteButton{
-  background-color: darkred;
+  background-image: linear-gradient(
+     #780000 0%, #c1121f 52%);
+  border: solid rgba(255, 0, 0, 0.3);
   color: whitesmoke;
-  font-weight: bold;
-  font-size: 25px;
-  height: 25%;
-  width: 60%;
-  margin-left: 1%;
-  margin-right: 2%;
-  margin-top: 3.5%;
-  border-radius: 50px;
+  font-size: 30px;
+  width: 100%;
+  margin-top: 20%;
+  font-family: 'Zen Dots', cursive;
 }
 
 .Titleinfo{
   height: 60%;
   font-size: 25px;
-  margin-bottom: 5%;
   border: none;
   width: 100%;
+  margin-top: 5%;
 }
 
 .Dateinfo{
@@ -194,16 +191,14 @@ font-size: 25px;
 }
 
 .UpdateNoteButton{
-  background-color: blue;
+  background-image: linear-gradient(
+     #0353a4 0%, #0466c8 52%);
+     border: solid rgba(0, 0, 255, 0.3);
   color: whitesmoke;
-  font-weight: bold;
-  font-size: 25px;
-  height: 25%;
-  width: 60%;
-  margin-left: 1%;
-  margin-right: 2%;
-  margin-top: 3.5%;
-  border-radius: 50px;
+  font-size: 30px;
+  width: 100%;
+  margin-top: 5%;
+  font-family: 'Zen Dots', cursive;
 }
 
 /*  Small Screens 530px and under*/
