@@ -132,6 +132,7 @@ function UpdateNote(){
 
 /*Mobile Functions*/
 
+/*Opens Notes Menu*/
 function NoteMenuShow(){
 /*hide flexboxes */
   document.getElementById("NoteInfoSectionSm").style.display = "none";
@@ -145,6 +146,7 @@ function NoteMenuShow(){
   document.getElementById("NoteContentControler").style.display = "flex"
 }
 
+/* Opens Event Menu*/
 function EventMenuShow(){
     /*hide divisions*/
     document.getElementById("NoteInfoSectionSm").style.display = "none";
@@ -157,6 +159,7 @@ function EventMenuShow(){
     document.getElementById("EventMenu").style.width ="100%";
     
 }
+/*Closes Event Menu*/
 function EventMenuClose(){
 /*Show divisions*/
     document.getElementById("NoteInfoSectionSm").style.display = "flex";
@@ -169,7 +172,7 @@ function EventMenuClose(){
     document.getElementById("EventMenu").style.width ="1%";
 }
 
-
+/* Closes Note Menu*/
 function NoteMenuClose(){
 
     /*changes display of flex boxes to flex so we can see them*/
@@ -184,25 +187,31 @@ function NoteMenuClose(){
     document.getElementById("NoteContentControler").style.display = "none";
 }
 
+/*removes note input from DOM*/
 function MobileClearNoteforNew(){
     ClearNoteforNew();
     NoteMenuClose();
 }
 
+/*Creates a Note, and opens Note Menu*/
 function CreateNoteMobile(){
     CreateNote();
     NoteMenuShow();
 }
 
+/* Deletes a Note and opens Note Menu*/
 function DeleteNoteMobile(){
     DeleteNote();
     NoteMenuShow();
 }
+
+/* Updates a currently selected Note, and opens the Note Menu*/
 function UpdateNoteMobile(){
     UpdateNote();
     NoteMenuShow();
 }
 
+/* Opens the clicked note button, and closes the Note menu*/
 const GetNoteMobile= e=>{
     /*Working here*/
     NoteMenuClose()
@@ -232,26 +241,32 @@ document.getElementById("NoteText").value = Text;
  
 };
 
+/* Gets the Event Clicked and displays the Event info in the Event menu*/
 const GetEvent = e =>{
 e.preventDefault();
+/*Targets the HTML of the Button Clicked*/
 let ClickedButton = e.target.innerHTML;
+/*Searches the Events Object for the InnerHTML of the Button and returns an indeex*/
 let EventTitleIndex = Events.findIndex(function (EventIndex){
     return EventIndex.EventTitle === `${ClickedButton}`;
 })
+/*de-structure the Events Object*/ 
 let NewEvent= Events[EventTitleIndex];
 let EventTitle = NewEvent.EventTitle;
 let EventTime = NewEvent.EventDate;
 let EventContent = NewEvent.EventDetails;
+
+/* assigning structured Events Object to DOM*/
 document.getElementById("EventTime").innerText = EventTime;
 document.getElementById("EventTitle").innerText = EventTitle;
 document.getElementById("EventDetails").innerText =EventContent;
 }
 
-
+/* Fires when the Create Event Button is clicked*/
 const onChange = (date) => {
     console.log(date.toString());
   };
-/*function to fire on Modal to select the date*/
+
 
 
 const HandelDateModalOpen= () =>{
@@ -259,16 +274,22 @@ const HandelDateModalOpen= () =>{
     document.getElementById("MainFlexBoxSm").style.display = "none";
     document.getElementById("EventContentControler").style.display = "none";
     document.getElementById("EventMenu").style.display ='none';
-
-
+    /* Activates the Modal By Changing the State*/
     setShowDateModal(true);
 
 
 }
 
-const HandelDateModalClose= () => setShowDateModal(false);
+const HandelDateModalClose= () => {
+    /*Pull Event Info From the DOM in the Modal*/
+    let ETitle = document.getElementById("SmModalTitleInput").value;
+    let EDate = OnChange(date);
+    /* Update the Events State*/
+    let NewEvent = [...Events];
+    /*Shut down the Modal*/
+    setShowDateModal(false);
 
-
+}
 
 function ButtonView() {
     if(BtnTrigger === false){
@@ -460,7 +481,7 @@ function ButtonView() {
                       <div className="SmallModalSm">
 
                         <div className="SmallModalTitleSm">When?</div>
-                        <DatePicker onChange={onChange}/>
+                        <DatePicker id="dateP" onChange={onChange}/>
                         <div className="SmallModalTitleSm">Event Title</div>
                         <input id="SmModalTitleInput" className="SmallModalEventTitle"></input>
                         <Button  className=" border-dark"variant="secondary" onClick={HandelDateModalClose}>
