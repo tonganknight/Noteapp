@@ -1,5 +1,8 @@
-import React, {useEffect } from 'react';
+import React, {useEffect, useState } from 'react';
 import {Breakpoint} from 'react-socks'
+import DatePicker from 'sassy-datepicker';
+import { Modal, Button} from 'react-bootstrap';
+
 var moment = require('moment');
 
 
@@ -15,6 +18,7 @@ function Main() {
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
     /*controls the current clicked note passes state it for array manipulation*/
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
+    const [ShowDateModal, setShowDateModal] = useState(false);
     
 
 function CreateNote (){
@@ -244,6 +248,25 @@ document.getElementById("EventDetails").innerText =EventContent;
 }
 
 
+const onChange = (date) => {
+    console.log(date.toString());
+  };
+/*function to fire on Modal to select the date*/
+
+
+const HandelDateModalOpen= () =>{
+    /*remove Events Menu */
+    document.getElementById("MainFlexBoxSm").style.display = "none";
+    document.getElementById("EventContentControler").style.display = "none";
+    document.getElementById("EventMenu").style.display ='none';
+
+
+    setShowDateModal(true);
+
+
+}
+
+const HandelDateModalClose= () => setShowDateModal(false);
 
 
 
@@ -425,7 +448,28 @@ function ButtonView() {
             </div> 
 
 
-                <button className="CreateEventButtonSm"> Create New Event +</button>
+                <button className="CreateEventButtonSm" onClick={HandelDateModalOpen} > Create New Event +</button>
+                
+                
+                <Modal  className=" border-dark .modal-content"
+                  size="lg"
+                  show={ShowDateModal}
+                  onHide={HandelDateModalClose}
+                  backdrop="static"
+                  aria-labelledby="example-modal-sizes-title-lg">
+                      <div className="SmallModalSm">
+
+                        <div className="SmallModalTitleSm">When?</div>
+                        <DatePicker onChange={onChange}/>
+                        <div className="SmallModalTitleSm">Event Title</div>
+                        <input id="SmModalTitleInput" className="SmallModalEventTitle"></input>
+                        <Button  className=" border-dark"variant="secondary" onClick={HandelDateModalClose}>
+                        Finished
+                        </Button>
+                      </div>
+                  
+                </Modal>
+
 
                 <div id="EventTime" className="SelectedEventTimeSm"></div>
                 

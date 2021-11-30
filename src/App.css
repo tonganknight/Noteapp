@@ -574,3 +574,28 @@ font-size: 25px;
   font-weight: bold;
   font-size: 20px;
 }
+
+.SmallModalSm{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.SmallModalTitleSm{
+  text-align: center;
+  margin-top: 2%;
+  font-weight: bold;
+  color: var(--Bootstrap-black);
+  font-family: 'Zen Dots', cursive;
+  font-size: 25px;
+}
+
+.SmallModalEventTitle{
+  margin-top: 5%;
+  width: 80%;
+  height: 25px;
+  font-family: 'Zen Dots', cursive;
+  margin-bottom: 5%;
+}
