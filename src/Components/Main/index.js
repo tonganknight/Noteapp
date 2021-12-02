@@ -14,8 +14,11 @@ function Main() {
     const [Events, setEvents]= React.useState([
         {EventTitle: "Doctors Appointment", EventDate: "December 1, 2021", EventDetails: "Bring the Eggnog"}
     ]);
+    /*State to manage the Date picked in the SM Modal*/
+    const [SmDate, setSmDate] = React.useState([{ SmNote: "Note"}]);
     /*controls the state of the NoteButtons for CRUD*/
     const [BtnTrigger, setBtnTrigger]= React.useState(true);
+    const [DeleteEventButton, SetDeleteEventButton]= React.useState(false);
     /*controls the current clicked note passes state it for array manipulation*/
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
     const [ShowDateModal, setShowDateModal] = useState(false);
@@ -260,11 +263,26 @@ let EventContent = NewEvent.EventDetails;
 document.getElementById("EventTime").innerText = EventTime;
 document.getElementById("EventTitle").innerText = EventTitle;
 document.getElementById("EventDetails").innerText =EventContent;
+
+/*activates the Delete Button*/
+SetDeleteEventButton(true);
 }
 
 /* Fires when the Create Event Button is clicked*/
 const onChange = (date) => {
-    console.log(date.toString());
+    /* convert to a string*/
+    let DatePulled = date.toString();
+    /* convert date to Moment.js format */
+    let dateObject = new Date(DatePulled);
+    let momentObject = moment(dateObject);
+    let momentString = momentObject.format('MMMM Do YYYY'); 
+    console.log("this is the date pulled " + momentString);
+    /*splice old value and add current date picker selection*/
+    let NewArrDate =[...SmDate];
+    NewArrDate.splice(0, 1, {SmNote: `${momentString}`});
+    console.log(NewArrDate);
+    /* Save state*/
+    setSmDate(NewArrDate);
   };
 
 
@@ -283,13 +301,37 @@ const HandelDateModalOpen= () =>{
 const HandelDateModalClose= () => {
     /*Pull Event Info From the DOM in the Modal*/
     let ETitle = document.getElementById("SmModalTitleInput").value;
-    let EDate = OnChange(date);
+    if(ETitle === ""){
+        window.alert("You must Name your Event");
+        return;
+    }
+   let EDate = SmDate[0].SmNote
     /* Update the Events State*/
-    let NewEvent = [...Events];
+    let NewEvent = [...Events, 
+        {EventTitle: `${ETitle}`, EventDate: `${EDate}`, EventDetails: "Drag and Drop Note Here!"}];
+    setEvents(NewEvent);
+    console.log(Events); 
+    document.getElementById("MainFlexBoxSm").style.display = "flex";
+    document.getElementById("EventContentControler").style.display = "flex";
+    document.getElementById("EventMenu").style.display ='flex';
+
     /*Shut down the Modal*/
     setShowDateModal(false);
-
 }
+
+function RemoveEventButton(){
+    if(DeleteEventButton === true){
+        return(
+            <button className="DeleteEventButtonSm" onClick={HandelDateModalOpen} >Delete Event</button>
+        )
+    }
+    if(DeleteEventButton === false){
+        return(
+            <div></div>
+        )
+    }
+
+};
 
 function ButtonView() {
     if(BtnTrigger === false){
@@ -311,6 +353,8 @@ function ButtonView() {
         </div>
         )
     }
+
+
     if(BtnTrigger === true){
         return(
             <div>
@@ -469,9 +513,10 @@ function ButtonView() {
             </div> 
 
 
-                <button className="CreateEventButtonSm" onClick={HandelDateModalOpen} > Create New Event +</button>
+            <button className="CreateEventButtonSm" onClick={HandelDateModalOpen} > Create New Event +</button>
                 
-                
+            <RemoveEventButton/>
+
                 <Modal  className=" border-dark .modal-content"
                   size="lg"
                   show={ShowDateModal}
