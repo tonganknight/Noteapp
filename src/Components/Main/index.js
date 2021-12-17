@@ -319,10 +319,30 @@ const HandelDateModalClose= () => {
     setShowDateModal(false);
 }
 
+function ClearEventDisplay(){
+    /*Erase the Event Details of currently displayed note*/
+    document.getElementById("EventTitle").innerHTML = "";
+    document.getElementById("EventTime").innerHTML = "";
+    document.getElementById("EventDetails").innerHTML ="";
+    /*Set the Display Button to not Display*/
+    SetDeleteEventButton(false);
+}
+
+function DeleteEvent(){
+    let targetDelete = document.getElementById("EventTitle").innerHTML;
+    let EventIndex = Events.findIndex(function (IndexOfEvent){
+        return IndexOfEvent.EventTitle === `${targetDelete}`
+    });
+    let NewEvents = [...Events];
+    NewEvents.splice(EventIndex, 1);
+    setEvents(NewEvents);
+    ClearEventDisplay();
+}
+
 function RemoveEventButton(){
     if(DeleteEventButton === true){
         return(
-            <button className="DeleteEventButtonSm" onClick={HandelDateModalOpen} >Delete Event</button>
+            <button className="DeleteEventButtonSm" onClick={DeleteEvent} >Delete Event</button>
         )
     }
     if(DeleteEventButton === false){
