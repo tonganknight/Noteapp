@@ -207,7 +207,6 @@ font-size: 25px;
   display: flex;
   flex-direction: row;
   height: 800px;
-  width: 100%;
   margin: 0px;
   padding: 0px;
   visibility: visible;
@@ -410,7 +409,7 @@ font-size: 25px;
 
 .CloseEventNoteMenu{
   align-self: flex-end ;
-  height: 15%;
+  height: 19%;
   width: 35px;
  background-color: whitesmoke;
  background-image: url("https://cdn3.iconfinder.com/data/icons/iconic-1/32/x_alt-256.png");

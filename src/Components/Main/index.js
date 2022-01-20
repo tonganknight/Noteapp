@@ -430,13 +430,13 @@ function ButtonView() {
 
             <div className="NoteFlex">
                 <div className="NoteInfo">
-                <div className="NoteTitle"><input id="Title" className="Titleinfo"></input></div>
+                <div className="NoteTitle"><input id="Title" placeholder="Your Title Here" className="Titleinfo"></input></div>
                
                 <ButtonView/>
                 </div>
                  <div className="NoteTime"id="TimeStamp">{TimeNow}</div>
                 <div id="NoteInfoText" className="NoteTextBox">
-                    <textarea id="NoteText" className="NoteText"></textarea>
+                    <textarea id="NoteText" placeholder="Your Note Here"className="NoteText"></textarea>
                 </div>
               
             </div>
@@ -490,7 +490,7 @@ function ButtonView() {
 
                         <ButtonView/>
 
-                        <input id="Title" className="TitleinfoSm"></input>
+                        <input id="Title"  placeholder="Your Title Here" className="TitleinfoSm"></input>
                     </div>
 
                     <div className="NoteTimeSm"id="TimeStamp">{TimeNow}
@@ -499,7 +499,7 @@ function ButtonView() {
                 </div>
 
                 <div className="NoteInfoText">
-                    <textarea id="NoteText" className="NoteTextBoxSm"></textarea>
+                    <textarea id="NoteText" placeholder="Your Note Here" className="NoteTextBoxSm"></textarea>
                 </div>
                     
             </div>
