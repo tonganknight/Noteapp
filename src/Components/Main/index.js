@@ -2,6 +2,8 @@ import React, {useEffect, useState } from 'react';
 import {Breakpoint} from 'react-socks'
 import DatePicker from 'sassy-datepicker';
 import { Modal, Button} from 'react-bootstrap';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 var moment = require('moment');
 
@@ -395,7 +397,7 @@ function ButtonView() {
 }
 
     return(
-    <div>
+        <DndProvider backend={HTML5Backend}>
         <Breakpoint large up>
 
         <div className="MainflexLg">
@@ -596,7 +598,7 @@ function ButtonView() {
            
         
         </Breakpoint>
-</div>
+        </DndProvider>
     );
 };
 export default Main
