@@ -22,6 +22,7 @@ function Main() {
     /*controls the current clicked note passes state it for array manipulation*/
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
     const [ShowDateModal, setShowDateModal] = useState(false);
+
     
 
 function CreateNote (){
@@ -353,6 +354,48 @@ function RemoveEventButton(){
 
 };
 
+const  AssignMobileNote = e =>{
+    e.preventDefault();
+    /*Targets the HTML of the Button Clicked*/
+    let NoteButtonTitle = e.target.innerHTML;
+    let ETitle = document.getElementById("EventTitle").innerHTML;
+    console.log(ETitle);
+      if(DeleteEventButton === false){
+        window.alert("You must select a Event before assigning it a note!");
+        }
+
+      if(DeleteEventButton === true){
+          //Look up Note Button that was clicked
+        let NoteLookup = displayedNote.findIndex(function (NoteIndex){
+        return NoteIndex.NoteName === `${NoteButtonTitle}`
+        })
+
+        //look up Event that is selected
+        let EventTitleIndex = Events.findIndex(function (EventIndex){
+            return EventIndex.EventTitle === `${ETitle}`
+            
+        })
+        //Destructuring DisplayedNote
+        let NoteTarget = displayedNote[NoteLookup];
+        let NoteText = NoteTarget.Text;
+
+        //Destructuring Events
+        let NewEvent = [...Events]
+        let FindEvent = Events[EventTitleIndex];
+        let EventNote = FindEvent.EventNote;
+        let EventTitle = FindEvent.EventTitle
+        let EventDate = FindEvent.EventDate
+
+        // Updates the Events. It removes the old Event and adds the new one with the update Note text we looked up
+        NewEvent.splice(EventTitleIndex, 1, {EventTitle:`${EventTitle}`, EventDate: `${EventDate}`, EventDetails: `${NoteText}` });
+        setEvents(NewEvent);
+
+        // Since React is Immutable, this assigns the displayed note to the note text we looked up. That way it reflects instantly
+        document.getElementById("EventDetails").innerHTML = NoteText
+
+    }
+}
+
 function ButtonView() {
     if(BtnTrigger === false){
         return(
@@ -373,7 +416,6 @@ function ButtonView() {
         </div>
         )
     }
-
 
     if(BtnTrigger === true){
         return(
@@ -575,7 +617,7 @@ function ButtonView() {
                     return(
                         <div>
                         <div className="NoteDate">{note.DateTime}</div>
-                        <button id={note.Index} key={note.Index} className="NoteItem">{note.NoteName}</button>
+                        <button id={note.Index} key={note.Index} onClick={AssignMobileNote} className="NoteItem">{note.NoteName}</button>
                         </div>
         )})}                    
                </div>
