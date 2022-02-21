@@ -23,8 +23,9 @@ function MobileUI(){
     /*controls the current clicked note passes state it for array manipulation*/
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
     const [ShowDateModal, setShowDateModal] = useState(false);
-    const [NoteMenuisActive, setNoteMenuisActive] =useState(false);
 
+    const [NoteMenuisActive, setNoteMenuisActive] =useState(false);
+    const [NoteMenuContentAppearActive, setNoteMenuContentAppearActive] = useState(false);
 
     //CRUD Methods
 
@@ -150,6 +151,7 @@ function NoteMenuShow(){
     /*resize menu and show content*/
         //activates state and rewrites className to apply animation
      setNoteMenuisActive(true);
+     setNoteMenuContentAppearActive(true);
       document.getElementById("NoteMenu").style.width="100%";
       document.getElementById("MenuButton").style.display= "none"
       document.getElementById("NoteContentControler").style.display = "flex"
@@ -200,6 +202,7 @@ function NoteMenuShow(){
         document.getElementById("NoteContentControler").style.display = "none";
         //reset state and rewrites className to setup onclick animation
         setNoteMenuisActive(false);
+        setNoteMenuContentAppearActive(false);
     }
     
     /*removes note input from DOM*/
@@ -439,7 +442,7 @@ function NoteMenuShow(){
         <div id="MainFlexBoxSm" className="MainflexSm">
 
             <div id="NoteMenu" className={NoteMenuisActive ? " PadSm MobileNotesMenuGrow" :  "PadSm"}>
-                <div id="NoteContentControler" className="NoteControlFlex">
+                <div id="NoteContentControler" className={NoteMenuContentAppearActive ?  "NoteControlFlex MobileNotesMenuElementAppear": "NoteControlFlex"}>
                    
                  <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
 
