@@ -652,13 +652,16 @@ font-size: 25px;
   95% {width: 95%;}
   100% {width: 100%;}
 
-
 }
+
+
 
 @keyframes Appear {
   0% {opacity: 0;}
   10% {opacity: 0;}
   25% {opacity: 0;}
   50% {opacity: 0.5;}
+  60% {opacity: 0.6;}
+  70% {opacity: 0.7;}
   100% {opacity: 1;}
 }
