@@ -23,6 +23,7 @@ function MobileUI(){
     /*controls the current clicked note passes state it for array manipulation*/
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
     const [ShowDateModal, setShowDateModal] = useState(false);
+    const [NoteMenuisActive, setNoteMenuisActive] =useState(false);
 
 
     //CRUD Methods
@@ -140,15 +141,19 @@ function MobileUI(){
 /*Opens Notes Menu*/
 function NoteMenuShow(){
     /*hide flexboxes */
+
       document.getElementById("NoteInfoSectionSm").style.display = "none";
       document.getElementById("NoteFlexSmBox").style.display = "none";
       document.getElementById("EventMenuButton").style.display = "none";
       document.getElementById("EventMenu").style.display = "none";
     
     /*resize menu and show content*/
+        //activates state and rewrites className to apply animation
+     setNoteMenuisActive(true);
       document.getElementById("NoteMenu").style.width="100%";
       document.getElementById("MenuButton").style.display= "none"
       document.getElementById("NoteContentControler").style.display = "flex"
+    
     }
     
     /* Opens Event Menu*/
@@ -161,6 +166,9 @@ function NoteMenuShow(){
         document.getElementById("MenuButton").style.display ="none";
         document.getElementById("NoteMenu").style.display= "none";
     
+
+
+
         document.getElementById("EventMenu").style.width ="100%";
         
     }
@@ -190,6 +198,8 @@ function NoteMenuShow(){
         document.getElementById("NoteMenu").style.width="1%";
         document.getElementById("MenuButton").style.display= "flex";
         document.getElementById("NoteContentControler").style.display = "none";
+        //reset state and rewrites className to setup onclick animation
+        setNoteMenuisActive(false);
     }
     
     /*removes note input from DOM*/
@@ -428,7 +438,7 @@ function NoteMenuShow(){
 
         <div id="MainFlexBoxSm" className="MainflexSm">
 
-            <div id="NoteMenu" className="PadSm">
+            <div id="NoteMenu" className={NoteMenuisActive ? " PadSm MobileNotesMenuGrow" :  "PadSm"}>
                 <div id="NoteContentControler" className="NoteControlFlex">
                    
                  <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>

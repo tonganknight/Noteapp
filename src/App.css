@@ -617,14 +617,15 @@ font-size: 25px;
 /* Animations */
 
 .MobileNotesMenuGrow{
-
+  Width: 100%;
   animation-name: GrowRight;
-  animation-duration: 2s;
+  animation-duration: 0.2s;
 
 }
 
 @keyframes GrowRight {
-  0% {width:13%;}
-  50% {width:63%;}
+  0% {width:1%;}
+  50% {width:50%;}
+  75% {width: 75%;}
   100% {width: 100%;}
 }
