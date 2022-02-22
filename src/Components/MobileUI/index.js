@@ -29,6 +29,7 @@ function MobileUI(){
     const [NoteMenuContentAppearActive, setNoteMenuContentAppearActive] = useState(false);
     const [EventMenuIsActive, setEventMenuIsActive] = useState(false);
     const [EventMenuContentAppearActive, setEventMenuContentAppearActive]= useState(false);
+    const [CreateButtonAnimate, setCreateButtonAnimate] =useState(false);
     //CRUD Methods
 
     function CreateNote (){
@@ -417,8 +418,18 @@ function NoteMenuShow(){
     
         }
     }
+
+    function OnchangeTitle (Typed) {
+
+        /*change the style to flex so the Create button shows up*/
+        document.getElementById("CreateButtonFlex").style.display = "flex";
+
+        /*insert animation here*/
+        setCreateButtonAnimate(true);
+    }
     
     function ButtonView() {
+
         if(BtnTrigger === false){
             return(
 
@@ -435,8 +446,8 @@ function NoteMenuShow(){
         if(BtnTrigger === true){
             return(
                     <Breakpoint small down>
-                    <div className="NoteButtonFlexSm">
-                            <button className="CreateNoteButtonSm" onClick={CreateNoteMobile}>Create Note</button>
+                    <div id="CreateButtonFlex" className="NoteButtonFlexSm">
+                            <button className={CreateButtonAnimate ? "CreateNoteButtonSm MobileBounceDown": "CreateNoteButtonSm"} onClick={CreateNoteMobile}>Create Note</button>
                     </div>
     
                     </Breakpoint>
@@ -488,7 +499,7 @@ function NoteMenuShow(){
 
                         <ButtonView/>
 
-                        <input id="Title"  placeholder="Your Title Here" className="TitleinfoSm"></input>
+                        <input id="Title"  placeholder="Your Title Here"  onChange={OnchangeTitle} className="TitleinfoSm"></input>
                     </div>
 
                     <div className="NoteTimeSm"id="TimeStamp">{TimeNow}
