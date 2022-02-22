@@ -30,6 +30,7 @@ function MobileUI(){
     const [EventMenuIsActive, setEventMenuIsActive] = useState(false);
     const [EventMenuContentAppearActive, setEventMenuContentAppearActive]= useState(false);
     const [CreateButtonAnimate, setCreateButtonAnimate] =useState(false);
+    const [ShrinkDivIsActive, setShrinkDivIsActive] = useState(false);
     //CRUD Methods
 
     function CreateNote (){
@@ -171,7 +172,7 @@ function NoteMenuShow(){
         document.getElementById("NoteFlexSmBox").style.display = "none";
         document.getElementById("EventMenuButton").style.display = "none";
         document.getElementById("NoteMenu").style.display= "none";
-
+        document.getElementById("ShrinkDiv").style.display = "flex";
   
        
         document.getElementById("EventMenu").style.width ="100%";
@@ -180,6 +181,7 @@ function NoteMenuShow(){
       /*Activates State and rewrites className to apply animation*/
         setEventMenuIsActive(true);
         setEventMenuContentAppearActive(true);
+        setShrinkDivIsActive(true);
         
         
     }
@@ -193,9 +195,12 @@ function NoteMenuShow(){
         document.getElementById("MenuButton").style.display ="flex";
         document.getElementById("NoteMenu").style.display= "flex";
         document.getElementById("EventMenu").style.width ="1%";
+        document.getElementById("ShrinkDiv").style.display = "none";
+        document.getElementById("ShrinkDiv").style.widtg = "0.002%";
         /* resets States so animation will replay*/
         setEventMenuIsActive(false);
         setEventMenuContentAppearActive(false);
+        setShrinkDivIsActive(false);
     }
     
     /* Closes Note Menu*/
@@ -522,7 +527,7 @@ function NoteMenuShow(){
                     <div className="MenuEventButtonSm" onClick={EventMenuShow}>Events</div>
                 
             </div>
-        
+            <div id="ShrinkDiv" className={ShrinkDivIsActive ? "MobileGrowDivShow":"MobileGrowDiv"}></div>
             <div id="EventMenu" className= {EventMenuIsActive ? "PadEventSm MobileMenuGrow " : "PadEventSm" }>
                 <div id="EventContentControler" className={EventMenuContentAppearActive ? " EventControlFlex MobileMenuElementAppear" : "EventControlFlex"}>
                     <div className="CloseEventNoteMenu" onClick={EventMenuClose}></div>
