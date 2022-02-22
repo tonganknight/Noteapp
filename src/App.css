@@ -616,20 +616,25 @@ font-size: 25px;
 
 /* Animations */
 
-.MobileNotesMenuGrow{
+.MobileMenuGrow{
   Width: 100%;
-  animation-name: GrowRight;
+  animation-name: Grow;
   animation-duration: 0.2s;
 
 }
 
-.MobileNotesMenuElementAppear{
+.MobileMenuElementAppear{
   animation-name: Appear;
   animation-duration: 0.9s;
  
 }
 
-@keyframes GrowRight {
+.MobileNotesMenuRetreat{
+  animation-name: RetreatLeft;
+  animation-duration: 0.9s;
+}
+
+@keyframes Grow {
   1% {width:1%;}
   5% {width: 5%;}
   10% {width:10%;}
@@ -644,7 +649,7 @@ font-size: 25px;
   55% {width: 55%;}
   60% {width: 60%;}
   65% {width: 65%;}
-  70% {width:70%;}
+  70% {width: 70%;}
   75% {width: 75%;}
   80% {width: 80%;}
   85% {width: 85%;}
@@ -652,6 +657,30 @@ font-size: 25px;
   95% {width: 95%;}
   100% {width: 100%;}
 
+}
+
+@keyframes RetreatLeft {
+  1% {width:100%;}
+  5% {width: 97%;}
+  10% {width:95%;}
+  15% {width: 90%;}
+  20% {width: 85%;}
+  25% {width: 80%;}
+  30% {width: 75%;}
+  35% {width: 70%;}
+  40% {width: 65%;}
+  45% {width: 60%;}
+  50% {width: 55%;}
+  55% {width: 50%;}
+  60% {width: 45%;}
+  65% {width: 40%;}
+  70% {width: 35%;}
+  75% {width: 30%;}
+  80% {width: 25%;}
+  85% {width: 20%;}
+  90% {width: 15%;}
+  95% {width: 10%;}
+  100% {width: 13%;}
 }
 
 

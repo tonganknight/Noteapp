@@ -24,9 +24,11 @@ function MobileUI(){
     const [CurrentNote, setCurrentNote]= React.useState([{Note: "Note"}]);
     const [ShowDateModal, setShowDateModal] = useState(false);
 
-    const [NoteMenuisActive, setNoteMenuisActive] =useState(false);
+    /*Animation Controls*/
+    const [NoteMenuIsActive, setNoteMenuIsActive] =useState(false);
     const [NoteMenuContentAppearActive, setNoteMenuContentAppearActive] = useState(false);
-
+    const [EventMenuIsActive, setEventMenuIsActive] = useState(false);
+    const [EventMenuContentAppearActive, setEventMenuContentAppearActive]= useState(false);
     //CRUD Methods
 
     function CreateNote (){
@@ -150,7 +152,7 @@ function NoteMenuShow(){
     
     /*resize menu and show content*/
         //activates state and rewrites className to apply animation
-     setNoteMenuisActive(true);
+     setNoteMenuIsActive(true);
      setNoteMenuContentAppearActive(true);
       document.getElementById("NoteMenu").style.width="100%";
       document.getElementById("MenuButton").style.display= "none"
@@ -161,17 +163,23 @@ function NoteMenuShow(){
     /* Opens Event Menu*/
     function EventMenuShow(){
         /*hide divisions*/
+
+
+
         document.getElementById("NoteInfoSectionSm").style.display = "none";
         document.getElementById("NoteFlexSmBox").style.display = "none";
         document.getElementById("EventMenuButton").style.display = "none";
-        document.getElementById("EventContentControler").style.display = "flex";
-        document.getElementById("MenuButton").style.display ="none";
         document.getElementById("NoteMenu").style.display= "none";
-    
 
-
-
+  
+       
         document.getElementById("EventMenu").style.width ="100%";
+        document.getElementById("MenuButton").style.display ="none";
+        document.getElementById("EventContentControler").style.display = "flex";
+      /*Activates State and rewrites className to apply animation*/
+        setEventMenuIsActive(true);
+        setEventMenuContentAppearActive(true);
+        
         
     }
     /*Closes Event Menu*/
@@ -183,8 +191,10 @@ function NoteMenuShow(){
         document.getElementById("EventContentControler").style.display = "none";
         document.getElementById("MenuButton").style.display ="flex";
         document.getElementById("NoteMenu").style.display= "flex";
-    
         document.getElementById("EventMenu").style.width ="1%";
+        /* resets States so animation will replay*/
+        setEventMenuIsActive(false);
+        setEventMenuContentAppearActive(false);
     }
     
     /* Closes Note Menu*/
@@ -201,7 +211,7 @@ function NoteMenuShow(){
         document.getElementById("MenuButton").style.display= "flex";
         document.getElementById("NoteContentControler").style.display = "none";
         //reset state and rewrites className to setup onclick animation
-        setNoteMenuisActive(false);
+        setNoteMenuIsActive(false);
         setNoteMenuContentAppearActive(false);
     }
     
@@ -441,8 +451,8 @@ function NoteMenuShow(){
 
         <div id="MainFlexBoxSm" className="MainflexSm">
 
-            <div id="NoteMenu" className={NoteMenuisActive ? " PadSm MobileNotesMenuGrow" :  "PadSm"}>
-                <div id="NoteContentControler" className={NoteMenuContentAppearActive ?  "NoteControlFlex MobileNotesMenuElementAppear": "NoteControlFlex"}>
+            <div id="NoteMenu" className={NoteMenuIsActive ? " PadSm MobileMenuGrow" :  "PadSm"}>
+                <div id="NoteContentControler" className={NoteMenuContentAppearActive ?  "NoteControlFlex MobileMenuElementAppear": "NoteControlFlex"}>
                    
                  <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
 
@@ -498,8 +508,8 @@ function NoteMenuShow(){
                 
             </div>
         
-            <div id="EventMenu" className="PadEventSm">
-                <div id="EventContentControler" className="EventControlFlex">
+            <div id="EventMenu" className= {EventMenuIsActive ? "PadEventSm MobileMenuGrow " : "PadEventSm" }>
+                <div id="EventContentControler" className={EventMenuContentAppearActive ? " EventControlFlex MobileMenuElementAppear" : "EventControlFlex"}>
                     <div className="CloseEventNoteMenu" onClick={EventMenuClose}></div>
                     <div className="EventTitleSm">Events</div>
             <div id ="UpcomingEvents" className="UpcomingEventsFlexSm">
