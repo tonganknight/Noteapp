@@ -421,12 +421,16 @@ function NoteMenuShow(){
 
     function OnchangeTitle (Typed) {
 
+        if(BtnTrigger === true ){
+
         /*change the style to flex so the Create button shows up*/
         document.getElementById("CreateButtonFlex").style.display = "flex";
-
         /*insert animation here*/
         setCreateButtonAnimate(true);
-    }
+        };
+
+       
+    };
     
     function ButtonView() {
 
