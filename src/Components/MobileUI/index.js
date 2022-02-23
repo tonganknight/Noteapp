@@ -337,7 +337,7 @@ function NoteMenuShow(){
        let EDate = SmDate[0].SmNote
         /* Update the Events State*/
         let NewEvent = [...Events, 
-            {EventTitle: `${ETitle}`, EventDate: `${EDate}`, EventDetails: "Drag and Drop Note Here!"}];
+            {EventTitle: `${ETitle}`, EventDate: `${EDate}`, EventDetails: "Click one of your Notes to assign it!"}];
         setEvents(NewEvent);
         console.log(Events); 
         document.getElementById("MainFlexBoxSm").style.display = "flex";
@@ -476,11 +476,11 @@ function NoteMenuShow(){
                    
                  <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
 
-                 <div className="PadTitle">Your Pad</div>
+                 <div className="PadTitle">Notes</div>
 
                 <button  onClick={MobileClearNoteforNew}className="CreateButtonSm" >Create New Note +</button>
                
-                <div className="ClickMeDiv">Click to See Your Note!</div>
+                <div className="ClickMeDiv">Click to See Your Note</div>
                <div id="SavedNotes" className="SavedNotesFlexSm">
                 {displayedNote.map(note =>{
 
@@ -560,7 +560,7 @@ function NoteMenuShow(){
                         <DatePicker id="dateP" onChange={onChange}/>
                         <div className="SmallModalTitleSm">Event Title</div>
                         <input id="SmModalTitleInput" className="SmallModalEventTitle"></input>
-                        <Button  className=" border-dark"variant="secondary" onClick={HandelDateModalClose}>
+                        <Button  className=" CreateEventButtonSmModal border-dark"variant="secondary" onClick={HandelDateModalClose}>
                         Finished
                         </Button>
                       </div>
