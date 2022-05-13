@@ -669,8 +669,14 @@ font-size: 25px;
   Width: 100%;
   animation-name: Grow;
   animation-duration: 0.2s;
-
 }
+
+.MobileMenuShrink{
+  Width: 100%;
+  animation-name: RetreatLeft;
+  animation-duration: 0.2s;
+}
+
 
 .MobileMenuElementAppear{
   animation-name: Appear;

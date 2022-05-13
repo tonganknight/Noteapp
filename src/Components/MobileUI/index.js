@@ -13,7 +13,7 @@ function MobileUI(){
         { NoteName: "My Note!", Text: "My Very First Note!", DateTime: "October 22nd 2021 4:00pm"}
     ]);
     const [Events, setEvents]= React.useState([
-        {EventTitle: "Doctors Appointment", EventDate: "December 1, 2021", EventDetails: "Bring the Eggnog"}
+        {EventTitle: "Doctors Appointment", EventDate: "December 1, 2021", EventDetails: "Check up"}
     ]);
     /*State to manage the Date picked in the SM Modal*/
     const [SmDate, setSmDate] = React.useState([{ SmNote: "Note"}]);
@@ -31,6 +31,8 @@ function MobileUI(){
     const [EventMenuContentAppearActive, setEventMenuContentAppearActive]= useState(false);
     const [CreateButtonAnimate, setCreateButtonAnimate] =useState(false);
     const [ShrinkDivIsActive, setShrinkDivIsActive] = useState(false);
+    const [AnimationMenu, setAnimationMenu] = useState("PadSm")
+
     //once clicked not is clicked it changes the color and plays animation
     const [ClickButtonColor, setClickButtonColor] = useState(false);
     //CRUD Methods
@@ -207,7 +209,9 @@ function NoteMenuShow(){
     
     /* Closes Note Menu*/
     function NoteMenuClose(){
-    
+
+     setAnimationMenu("PadSm MobileMenuShrink");
+
         /*changes display of flex boxes to flex so we can see them*/
         document.getElementById("NoteInfoSectionSm").style.display = "flex";
         document.getElementById("NoteFlexSmBox").style.display = "flex";
@@ -442,6 +446,7 @@ function NoteMenuShow(){
 
        
     };
+
     
     function ButtonView() {
 
@@ -477,7 +482,7 @@ function NoteMenuShow(){
 
         <div id="MainFlexBoxSm" className="MainflexSm">
 
-            <div id="NoteMenu" className={NoteMenuIsActive ? " PadSm MobileMenuGrow" :  "PadSm"}>
+            <div id="NoteMenu" className={NoteMenuIsActive ? " PadSm MobileMenuGrow" :  AnimationMenu}>
                 <div id="NoteContentControler" className={NoteMenuContentAppearActive ?  "NoteControlFlex MobileMenuElementAppear": "NoteControlFlex"}>
                    
                  <div className="CloseNoteMenu" onClick={NoteMenuClose}></div>
@@ -508,7 +513,7 @@ function NoteMenuShow(){
 
             
             
-                <div id="NoteFlexSmBox"className="NoteFlexSm">
+                <div id="NoteFlexSmBox"className=" MobileMenuElementAppear NoteFlexSm">
                     <div id="NoteInfoSectionSm" className="NoteInfoSm">
                         <div className="NoteTitleSm">
 
