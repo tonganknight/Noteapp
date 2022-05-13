@@ -31,6 +31,8 @@ function MobileUI(){
     const [EventMenuContentAppearActive, setEventMenuContentAppearActive]= useState(false);
     const [CreateButtonAnimate, setCreateButtonAnimate] =useState(false);
     const [ShrinkDivIsActive, setShrinkDivIsActive] = useState(false);
+    //once clicked not is clicked it changes the color and plays animation
+    const [ClickButtonColor, setClickButtonColor] = useState(false);
     //CRUD Methods
 
     function CreateNote (){
@@ -247,8 +249,11 @@ function NoteMenuShow(){
     
     /* Opens the clicked note button, and closes the Note menu*/
     const GetNoteMobile= e=>{
+
+        setClickButtonColor(true);
+
         /*Working here*/
-        NoteMenuClose()
+        NoteMenuClose();
         /*setting button state*/
      setBtnTrigger(false);
      /*getting the name of the saved Button*/
@@ -272,6 +277,7 @@ function NoteMenuShow(){
     /*Assigns the Note to the text areas*/
     document.getElementById("Title").value = Title;
     document.getElementById("NoteText").value = Text;
+    setClickButtonColor(false);
      
     };
     
@@ -487,7 +493,7 @@ function NoteMenuShow(){
                     return(
                         <div>
                         <div className="NoteDate">{note.DateTime}</div>
-                        <button id={note.Index} key={note.Index} onClick={GetNoteMobile}className="NoteItem">{note.NoteName}</button>
+                        <button id={note.Index} key={note.Index} onClick={GetNoteMobile}className={ClickButtonColor ? "SelectedNoteItem" :"NoteItem" }>{note.NoteName}</button>
                         </div>
         )})}                    
                </div>
