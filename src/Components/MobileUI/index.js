@@ -211,7 +211,7 @@ function NoteMenuShow(){
     function NoteMenuClose(){
 
      setAnimationMenu("PadSm MobileMenuShrink");
-
+     document.getElementById("NoteFlexSmBox").style.display = "none";
         /*changes display of flex boxes to flex so we can see them*/
         document.getElementById("NoteInfoSectionSm").style.display = "flex";
         document.getElementById("NoteFlexSmBox").style.display = "flex";
@@ -567,9 +567,9 @@ function NoteMenuShow(){
                   aria-labelledby="example-modal-sizes-title-lg">
                       <div className="SmallModalSm">
 
-                        <div className="SmallModalTitleSm">When?</div>
+                        <div className="SmallModalTitleSm">Event Date</div>
                         <DatePicker id="dateP" onChange={onChange}/>
-                        <div className="SmallModalTitleSm">Event Title</div>
+                        <div className="SmallModalTitleSm">Event Name</div>
                         <input id="SmModalTitleInput" className="SmallModalEventTitle"></input>
                         <Button  className=" CreateEventButtonSmModal border-dark"variant="secondary" onClick={HandelDateModalClose}>
                         Finished
