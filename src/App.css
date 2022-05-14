@@ -672,7 +672,7 @@ font-size: 25px;
   animation-duration: 0.2s;
 }
 
-.MobileMenuShrink{
+.MobileNoteMenuShrink{
   Width: 100%;
   animation-name: RetreatLeft;
   animation-duration: 0.2s;
@@ -688,6 +688,7 @@ font-size: 25px;
 .MobileNotesMenuRetreat{
   animation-name: RetreatLeft;
   animation-duration: 0.9s;
+
 }
 
 .MobileBounceDown{

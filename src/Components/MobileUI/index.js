@@ -31,7 +31,12 @@ function MobileUI(){
     const [EventMenuContentAppearActive, setEventMenuContentAppearActive]= useState(false);
     const [CreateButtonAnimate, setCreateButtonAnimate] =useState(false);
     const [ShrinkDivIsActive, setShrinkDivIsActive] = useState(false);
+
+    //adds the default state to the notemenu 
     const [AnimationMenu, setAnimationMenu] = useState("PadSm")
+
+    //adds the grow effect for notemenu
+    const [AnimationNoteView, setAnimationNoteView] =useState("MobileMenuElementAppear NoteFlexSm")
 
     //once clicked not is clicked it changes the color and plays animation
     const [ClickButtonColor, setClickButtonColor] = useState(false);
@@ -170,8 +175,6 @@ function NoteMenuShow(){
     function EventMenuShow(){
         /*hide divisions*/
 
-
-
         document.getElementById("NoteInfoSectionSm").style.display = "none";
         document.getElementById("NoteFlexSmBox").style.display = "none";
         document.getElementById("EventMenuButton").style.display = "none";
@@ -209,11 +212,14 @@ function NoteMenuShow(){
     
     /* Closes Note Menu*/
     function NoteMenuClose(){
+        //adds the shrink animation class to notemenu
+     setAnimationMenu("PadSm MobileNoteMenuShrink");
+     setAnimationNoteView(" MobileMenuElementAppear NoteFlexSm MobileMenuGrow");
 
-     setAnimationMenu("PadSm MobileMenuShrink");
-     document.getElementById("NoteFlexSmBox").style.display = "none";
+     
         /*changes display of flex boxes to flex so we can see them*/
-        document.getElementById("NoteInfoSectionSm").style.display = "flex";
+        //document.getElementById("NoteInfoSectionSm").style.display = "flex";
+        document.getElementById("NoteInfoSectionSm").style.display ="flex"
         document.getElementById("NoteFlexSmBox").style.display = "flex";
         document.getElementById("EventMenuButton").style.display = "flex";
         document.getElementById("EventMenu").style.display = "flex";
@@ -513,7 +519,7 @@ function NoteMenuShow(){
 
             
             
-                <div id="NoteFlexSmBox"className=" MobileMenuElementAppear NoteFlexSm">
+                <div id="NoteFlexSmBox"className={AnimationNoteView}>
                     <div id="NoteInfoSectionSm" className="NoteInfoSm">
                         <div className="NoteTitleSm">
 
