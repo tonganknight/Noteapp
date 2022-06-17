@@ -678,6 +678,12 @@ font-size: 25px;
   animation-duration: 0.2s;
 }
 
+.MobileEventMenuClose{
+  animation-name: RetreatLeft;
+  animation-duration: 0.9s;
+  
+}
+
 
 .MobileMenuElementAppear{
   animation-name: Appear;

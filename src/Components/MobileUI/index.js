@@ -32,13 +32,15 @@ function MobileUI(){
     const [CreateButtonAnimate, setCreateButtonAnimate] =useState(false);
     const [ShrinkDivIsActive, setShrinkDivIsActive] = useState(false);
 
+    const [EventMenuClass, setEventMenuClass] = useState("PadEventSm");
+
     //adds the default state to the notemenu 
     const [AnimationMenu, setAnimationMenu] = useState("PadSm")
 
     //adds the grow effect for notemenu
     const [AnimationNoteView, setAnimationNoteView] =useState("MobileMenuElementAppear NoteFlexSm")
-
-    //once clicked not is clicked it changes the color and plays animation
+ 
+ //once clicked not is clicked it changes the color and plays animation
     const [ClickButtonColor, setClickButtonColor] = useState(false);
     //CRUD Methods
 
@@ -203,11 +205,11 @@ function NoteMenuShow(){
         document.getElementById("NoteMenu").style.display= "flex";
         document.getElementById("EventMenu").style.width ="1%";
         document.getElementById("ShrinkDiv").style.display = "none";
-        document.getElementById("ShrinkDiv").style.widtg = "0.002%";
+        document.getElementById("ShrinkDiv").style.width = "0.002%";
         /* resets States so animation will replay*/
         setEventMenuIsActive(false);
         setEventMenuContentAppearActive(false);
-        setShrinkDivIsActive(false);
+     
     }
     
     /* Closes Note Menu*/
