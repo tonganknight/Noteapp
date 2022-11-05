@@ -11,10 +11,10 @@ function Main() {
     
     return(
         
-<div className="LgFlex">
+<div>
 
     <Breakpoint large up>
-
+<div className="LgFlex">
            
                 <div className='LgTitle'>Welcome to React Thought!!</div>
                 <div className="LgintroText">
@@ -26,7 +26,7 @@ function Main() {
                 <div className='Lgimage'></div>
 
                 
-
+</div>
 
 
     </Breakpoint>
@@ -37,7 +37,7 @@ function Main() {
 
     <MobileUI/>
 
-</div>
+    </div>
     )
 
 

@@ -10,17 +10,14 @@
 
 
 .LgFlex{
-  display: flex;
   background-color: var(--Bootstrap-black);
   flex-direction: row;
   height: 1200px;
-  margin: 0px;
-  padding: 0px;
- justify-content: center;
+  padding-left: 25%;
+  justify-content: center;
 }
 
 .LgTitle{
-  margin-left: 35%;
   margin-right: 35%;
   color: var(--whiteText);
   font-size: 50px;
@@ -36,13 +33,11 @@
   background-size: cover;
   width: 300px;
   height: 300px;
-  margin-right: 25%;
-  margin-left: 46%;
+  margin-left: 20%;
   margin-top: 3%;
 }
 
 .LgintroText{
-  margin-left: 40%;
   margin-right: 35%;
   color: var(--whiteText);
   font-size: 30px;
